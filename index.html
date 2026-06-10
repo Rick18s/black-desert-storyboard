@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Black Desert Resort — Director's Cut Ribbon Concept</title>
-  <meta name="description" content="Extended cinematic motion concept for the Black Desert Resort inner bowl LED ribbon board.">
+  <title>Black Desert Resort — Client Refinement Ribbon Concept</title>
+  <meta name="description" content="Ten-second refined motion concept for the Black Desert Resort inner bowl LED ribbon board.">
   <style>
     @font-face {
       font-family: "Avenir BDR";
@@ -23,7 +23,7 @@
       --orange-dark: #a94714;
       --ink: #11100e;
       --paper: #f3efe8;
-      --duration: 8s;
+      --duration: 10s;
     }
 
     * { box-sizing: border-box; }
@@ -198,197 +198,197 @@
     }
 
     .motion.paused > *,
-    .motion.paused .scene::before { animation-play-state: paused; }
+    .motion.paused .aerial-scene::before { animation-play-state: paused; }
 
     .orange-field {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, var(--orange-dark), var(--orange) 32% 82%, #e47728);
-      animation-name: orangeField;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange) 44%, #e47728);
     }
 
-    @keyframes orangeField {
-      0%, 12% { transform: scaleX(0); transform-origin: left; }
-      18%, 45% { transform: scaleX(1); transform-origin: left; }
-      52%, 90% { transform: translateX(-100%); }
-      96%, 100% { transform: translateX(0); }
-    }
-
-    .brand-lockup {
+    .logo-run {
       position: absolute;
-      z-index: 7;
-      left: 11%;
+      z-index: 8;
       top: 50%;
-      width: 33%;
-      height: 70%;
+      left: 0;
+      width: 31%;
+      opacity: 0;
+      transform: translate(-110%, -50%);
+      animation-name: logoRun;
+    }
+
+    .mini-lockup {
       display: flex;
       align-items: center;
-      gap: 7%;
-      opacity: 0;
-      animation-name: logoReveal;
+      gap: 6%;
+      min-width: 0;
     }
 
-    .official-symbol {
-      width: 18%;
-      max-height: 88%;
+    .mini-lockup > img {
+      width: 21%;
+      max-height: 74%;
       object-fit: contain;
-      transform: scale(2.35);
+      transform: scale(2.15);
     }
 
-    .official-wordmark {
+    .mini-wordmark {
       display: grid;
-      line-height: .86;
+      line-height: .84;
       white-space: nowrap;
     }
 
-    .official-wordmark strong {
+    .mini-wordmark b {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(8px, 1.45vw, 25px);
+      font-size: clamp(7px, 1.28vw, 21px);
       font-weight: 400;
       letter-spacing: .035em;
     }
 
-    .official-wordmark span {
-      margin-top: 6%;
-      font-size: clamp(5px, .72vw, 12px);
-      letter-spacing: .48em;
+    .mini-wordmark small {
+      margin-top: 7%;
+      font-size: clamp(4px, .58vw, 10px);
+      letter-spacing: .44em;
       text-align: center;
     }
 
-    @keyframes logoReveal {
-      0%, 13% { opacity: 0; transform: translateY(80%); clip-path: inset(100% 0 0); }
-      20%, 29% { opacity: 1; transform: translateY(-50%); clip-path: inset(0); }
-      35%, 100% { opacity: 0; transform: translateY(-145%); clip-path: inset(0 0 100%); }
+    @keyframes logoRun {
+      0% { opacity: 0; transform: translate(-110%, -50%); }
+      3% { opacity: 1; }
+      10% { opacity: 1; transform: translate(155%, -50%); }
+      14% { opacity: 0; transform: translate(270%, -50%); }
+      100% { opacity: 0; transform: translate(270%, -50%); }
     }
 
-    .copy {
+    .message {
       position: absolute;
       z-index: 8;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5%;
       opacity: 0;
+    }
+
+    .message strong {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(19px, 3.2vw, 57px);
-      letter-spacing: -.055em;
+      font-size: clamp(18px, 3vw, 54px);
+      font-weight: 400;
+      letter-spacing: -.045em;
       white-space: nowrap;
     }
 
-    .copy.visit { left: 27%; top: 13%; animation-name: visit; }
-    .copy.play { left: 48%; bottom: 12%; animation-name: play; }
-    .copy.own { left: 68%; top: 14%; animation-name: own; }
+    .message .mini-lockup { width: 31%; }
 
-    @keyframes visit {
-      0%, 27% { opacity: 0; transform: translateY(-120%); }
-      33%, 43% { opacity: 1; transform: translateY(0); }
-      48%, 100% { opacity: 0; transform: translateY(110%); }
+    .message.visit { animation-name: visitMessage; }
+    .message.own { animation-name: ownMessage; }
+    .message.play { animation-name: playMessage; }
+
+    @keyframes visitMessage {
+      0%, 12% { opacity: 0; transform: translateX(-26%); clip-path: inset(0 100% 0 0); }
+      17%, 25% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
+      29%, 100% { opacity: 0; transform: translateX(18%); clip-path: inset(0 0 0 100%); }
     }
 
-    @keyframes play {
-      0%, 39% { opacity: 0; transform: translateY(120%); }
-      46%, 56% { opacity: 1; transform: translateY(0); }
-      61%, 100% { opacity: 0; transform: translateY(-110%); }
+    @keyframes ownMessage {
+      0%, 28% { opacity: 0; transform: translateX(-26%); clip-path: inset(0 100% 0 0); }
+      33%, 41% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
+      45%, 100% { opacity: 0; transform: translateX(18%); clip-path: inset(0 0 0 100%); }
     }
 
-    @keyframes own {
-      0%, 52% { opacity: 0; transform: translateY(-120%); }
-      59%, 69% { opacity: 1; transform: translateY(0); }
-      74%, 100% { opacity: 0; transform: translateY(110%); }
+    @keyframes playMessage {
+      0%, 44% { opacity: 0; transform: translateX(-26%); clip-path: inset(0 100% 0 0); }
+      49%, 57% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
+      61%, 100% { opacity: 0; transform: translateX(18%); clip-path: inset(0 0 0 100%); }
     }
 
-    .scene {
+    .aerial-scene {
       position: absolute;
-      z-index: 5;
+      z-index: 6;
       inset: 0;
       opacity: 0;
       overflow: hidden;
       background: linear-gradient(90deg, var(--orange-dark), var(--orange) 50%, #e47728);
+      animation-name: aerialReveal;
     }
 
-    .scene::before {
+    .aerial-scene::before {
       content: "";
       position: absolute;
-      inset: 0 16%;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      animation-duration: var(--duration);
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
+      inset: 0 8%;
+      background: url("assets/aerial-resort-center.jpg") center 54% / cover no-repeat;
+      animation: aerialPan var(--duration) ease-in-out infinite;
     }
 
-    .scene::after {
+    .aerial-scene::after {
       content: "";
       position: absolute;
       inset: 0;
-      pointer-events: none;
       background:
         linear-gradient(90deg,
           var(--orange-dark) 0%,
-          rgba(190, 76, 23, .96) 13%,
-          rgba(207, 91, 28, 0) 31%,
-          rgba(207, 91, 28, 0) 69%,
-          rgba(219, 101, 30, .96) 87%,
+          rgba(190,76,23,.92) 8%,
+          rgba(207,91,28,0) 23%,
+          rgba(207,91,28,0) 77%,
+          rgba(225,107,35,.92) 92%,
           #e47728 100%);
     }
 
-    .scene.resort {
-      clip-path: circle(0 at 50% 50%);
-      animation-name: resortReveal;
+    @keyframes aerialReveal {
+      0%, 59% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      65%, 81% { opacity: 1; clip-path: inset(0); }
+      85%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
-    .scene.resort::before {
-      background-image: url("assets/resort-panorama.jpg");
-      background-position: center 36%;
-      animation-name: resortPan;
+    @keyframes aerialPan {
+      0%, 59% { transform: translateX(3%) scale(1.04); }
+      85%, 100% { transform: translateX(-3%) scale(1.04); }
     }
 
-    @keyframes resortReveal {
-      0%, 65% { opacity: 0; clip-path: circle(0 at 72% 48%); }
-      72% { opacity: 1; clip-path: circle(24% at 72% 48%); }
-      80%, 84% { opacity: 1; clip-path: circle(110% at 50% 50%); }
-      88%, 100% { opacity: 0; clip-path: circle(110% at 50% 50%); }
+    .end-card {
+      position: absolute;
+      z-index: 10;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5%;
+      opacity: 0;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange) 48%, #e47728);
+      animation-name: endCard;
     }
 
-    @keyframes resortPan {
-      0%, 65% { transform: translateX(8%) scale(1.08); }
-      88%, 100% { transform: translateX(-6%) scale(1.08); }
+    .end-card .mini-lockup { width: 31%; }
+
+    .end-card span {
+      padding-left: 5%;
+      border-left: 1px solid rgba(255,255,255,.55);
+      font-size: clamp(8px, 1.4vw, 22px);
+      letter-spacing: .055em;
+      white-space: nowrap;
     }
 
-    .scene.golf {
-      clip-path: inset(0 100% 0 0);
-      animation-name: golfReveal;
-    }
-
-    .scene.golf::before {
-      background-image: url("assets/golf-panorama.jpg");
-      background-position: center 42%;
-      animation-name: golfPan;
-    }
-
-    @keyframes golfReveal {
-      0%, 81% { opacity: 0; clip-path: inset(0 100% 0 0); }
-      88% { opacity: 1; clip-path: inset(0 45% 0 0); }
-      94%, 98% { opacity: 1; clip-path: inset(0); }
-      100% { opacity: 0; clip-path: inset(0 0 0 100%); }
-    }
-
-    @keyframes golfPan {
-      0%, 81% { transform: translateX(-7%) scale(1.08); }
-      100% { transform: translateX(7%) scale(1.08); }
+    @keyframes endCard {
+      0%, 82% { opacity: 0; transform: translateY(100%); }
+      88%, 98% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-100%); }
     }
 
     .golf-ball {
       position: absolute;
       z-index: 12;
-      left: -4%;
-      top: 48%;
-      width: clamp(14px, 2.6vw, 43px);
+      left: -3%;
+      top: 50%;
+      width: clamp(7px, .95vw, 15px);
       aspect-ratio: 1;
       border-radius: 50%;
+      opacity: .46;
       background:
-        radial-gradient(circle at 28% 24%, rgba(180,180,180,.55) 0 4%, transparent 5%) 0 0 / 26% 26%,
-        radial-gradient(circle at 70% 60%, rgba(170,170,170,.42) 0 4%, transparent 5%) 0 0 / 28% 28%,
-        radial-gradient(circle at 35% 30%, white, #e9e7df 62%, #aaa 100%);
-      box-shadow: 0 4px 12px rgba(0,0,0,.4);
+        radial-gradient(circle at 28% 25%, rgba(145,145,145,.45) 0 3.5%, transparent 4.5%) 0 0 / 25% 25%,
+        radial-gradient(circle at 68% 62%, rgba(130,130,130,.35) 0 3.5%, transparent 4.5%) 0 0 / 28% 28%,
+        radial-gradient(circle at 35% 28%, #fff 0 18%, #e9e7df 55%, #9c9b96 100%);
+      box-shadow: 0 2px 7px rgba(0,0,0,.35);
       animation-name: ballTravel;
       animation-timing-function: linear;
     }
@@ -396,43 +396,20 @@
     .golf-ball::after {
       content: "";
       position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 230%;
-      height: 125%;
-      border-radius: 50%;
-      border-bottom: 2px solid rgba(255,255,255,.38);
-      transform: translate(-50%, -52%);
+      left: -150%;
+      top: 48%;
+      width: 150%;
+      border-top: 1px solid rgba(255,255,255,.2);
     }
 
     @keyframes ballTravel {
-      0% { left: -5%; top: 50%; transform: rotate(0); }
-      17% { left: 18%; top: 18%; transform: rotate(300deg); }
-      31% { left: 31%; top: 58%; transform: rotate(560deg); }
-      45% { left: 48%; top: 20%; transform: rotate(830deg); }
-      59% { left: 64%; top: 59%; transform: rotate(1100deg); }
-      73% { left: 78%; top: 22%; transform: rotate(1370deg); }
-      86% { left: 90%; top: 58%; transform: rotate(1600deg); }
-      100% { left: 104%; top: 50%; transform: rotate(1900deg); }
-    }
-
-    .pulse {
-      position: absolute;
-      z-index: 6;
-      width: 8%;
-      aspect-ratio: 1;
-      border: 2px solid white;
-      border-radius: 50%;
-      opacity: 0;
-      animation-name: pulse;
-    }
-
-    @keyframes pulse {
-      0%, 16% { left: 19%; top: 50%; opacity: 0; transform: translate(-50%,-50%) scale(.2); }
-      19% { opacity: .75; transform: translate(-50%,-50%) scale(1); }
-      25%, 68% { left: 72%; top: 50%; opacity: 0; transform: translate(-50%,-50%) scale(2.5); }
-      72% { opacity: .72; transform: translate(-50%,-50%) scale(1); }
-      79%, 100% { opacity: 0; transform: translate(-50%,-50%) scale(3.2); }
+      0%, 5% { left: -3%; top: 58%; opacity: 0; transform: rotate(0); }
+      12% { opacity: .6; }
+      23% { left: 29%; top: 26%; transform: rotate(300deg); }
+      39% { left: 52%; top: 76%; transform: rotate(560deg); }
+      55% { left: 76%; top: 26%; opacity: .42; transform: rotate(820deg); }
+      64% { left: 96%; top: 52%; opacity: 0; transform: rotate(1020deg); }
+      100% { left: 96%; top: 52%; opacity: 0; transform: rotate(1020deg); }
     }
 
     .controls {
@@ -580,7 +557,7 @@
       color: white;
       background:
         linear-gradient(90deg, rgba(17,16,14,.12), rgba(17,16,14,.55)),
-        url("assets/resort-panorama.jpg") center / cover no-repeat;
+        url("assets/aerial-resort-center.jpg") center 62% / cover no-repeat;
     }
 
     .closing-statement p {
@@ -612,8 +589,7 @@
       .section-head { grid-template-columns: 1fr; }
       .bowl { height: 355px; border-radius: 38% 38% 8px 8px / 24% 24% 8px 8px; }
       .beats, .specs { grid-template-columns: 1fr 1fr; }
-      .brand-lockup { width: 42%; }
-      .copy { font-size: clamp(17px, 4vw, 35px); }
+      .message .mini-lockup { width: 38%; }
       .version-tabs { overflow-x: auto; max-width: 78vw; }
     }
 
@@ -626,7 +602,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .motion > *, .motion .scene::before { animation-play-state: paused; }
+      .motion > *, .motion .aerial-scene::before { animation-play-state: paused; }
     }
   </style>
 </head>
@@ -637,7 +613,8 @@
       <a class="version-tab" href="previous-concept.html">Concept 01</a>
       <a class="version-tab" href="concept-02.html">Concept 02</a>
       <a class="version-tab" href="concept-03.html">Concept 03</a>
-      <a class="version-tab active" href="index.html" aria-current="page">Concept 04 · Director's Cut</a>
+      <a class="version-tab" href="concept-04.html">Concept 04</a>
+      <a class="version-tab active" href="index.html" aria-current="page">Concept 05 · Client Refinement</a>
     </div>
   </nav>
 
@@ -645,12 +622,12 @@
     <section class="hero">
       <div class="hero-copy">
         <div>
-          <p class="eyebrow">Extended motion exploration</p>
-          <h1>Two landscapes.<br>One journey.</h1>
+          <p class="eyebrow">Client refinement · 10 seconds</p>
+          <h1>One destination.<br>Three invitations.</h1>
         </div>
         <p class="lead">
-          An extended cinematic version that gives the brand, campaign messages and two
-          panoramic landscapes more time to unfold across the inner bowl.
+          A refined sequence pairing every campaign headline with the Black Desert Resort
+          logo, followed by one sweeping aerial view and a clear digital call to action.
         </p>
       </div>
 
@@ -662,20 +639,20 @@
 
       <div class="controls" aria-label="Animation controls">
         <button class="control" id="toggleMotion" type="button">Pause</button>
-        <button class="control" id="restartMotion" type="button">Replay 8 sec</button>
+        <button class="control" id="restartMotion" type="button">Replay 10 sec</button>
       </div>
     </section>
 
     <section class="concept">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Director's cut preview</p>
-          <h2>More time for the destination to breathe.</h2>
+          <p class="eyebrow">Client refinement preview</p>
+          <h2>Clear brand pairing at every beat.</h2>
         </div>
         <p>
-          The golf ball remains the connective motion element, but this sequence expands the
-          visual storytelling. A circular reveal opens onto the resort panorama, followed by
-          a lateral wipe into the golf landscape.
+          The logo first travels across the ribbon, then remains paired with Visit, Own It
+          and Play It. A restrained golf ball adds continuity without competing with the
+          messaging, and one aerial image presents the full property.
         </p>
       </div>
 
@@ -683,45 +660,42 @@
       <div class="specs">
         <div class="spec"><small>Canvas</small><strong>11520 × 180 px</strong></div>
         <div class="spec"><small>Frame rate</small><strong>29.97 fps</strong></div>
-        <div class="spec"><small>Exploration length</small><strong>8 seconds</strong></div>
-        <div class="spec"><small>Visual system</small><strong>Two panorama journey</strong></div>
+        <div class="spec"><small>Exploration length</small><strong>10 seconds</strong></div>
+        <div class="spec"><small>Visual system</small><strong>Headline + logo pairing</strong></div>
       </div>
     </section>
 
     <section class="timeline">
-      <p class="eyebrow">Extended sequence</p>
-      <h2>A more cinematic rhythm.</h2>
+      <p class="eyebrow">Refined sequence</p>
+      <h2>A clear left-to-right story.</h2>
       <div class="beats">
-        <article class="beat"><b>0.0–1.4 sec</b><div><strong>Brand arrival</strong><p>Orange fills the ribbon as the ball activates the horizontal lockup.</p></div></article>
-        <article class="beat"><b>1.4–4.8 sec</b><div><strong>Visit.<br>Play It.<br>Own It.</strong><p>Each message receives a clear reveal and hold.</p></div></article>
-        <article class="beat"><b>4.8–6.7 sec</b><div><strong>Resort panorama</strong><p>A circular expansion opens the full resort landscape.</p></div></article>
-        <article class="beat"><b>6.7–7.8 sec</b><div><strong>Golf panorama</strong><p>A directional wipe carries the audience into the course.</p></div></article>
-        <article class="beat"><b>7.8–8.0 sec</b><div><strong>Seamless return</strong><p>The ball exits and the orange brand field begins again.</p></div></article>
+        <article class="beat"><b>0.0–1.4 sec</b><div><strong>Logo journey</strong><p>The horizontal BDR logo travels across the orange ribbon.</p></div></article>
+        <article class="beat"><b>1.4–6.1 sec</b><div><strong>Visit.<br>Own It.<br>Play It.</strong><p>Each headline enters from the left and remains paired with the BDR logo.</p></div></article>
+        <article class="beat"><b>6.1–8.5 sec</b><div><strong>Aerial property view</strong><p>One sweeping image prioritizes the resort while retaining visible golf course context.</p></div></article>
+        <article class="beat"><b>8.5–10 sec</b><div><strong>Brand close</strong><p>Full orange returns with the BDR logo and blackdesertresort.com.</p></div></article>
       </div>
     </section>
 
     <section class="closing-statement">
-      <p>A richer motion study that lets the scale and character of Black Desert Resort lead the experience.</p>
+      <p>A focused ten-second story that keeps the destination, campaign and brand working together.</p>
     </section>
   </main>
 
   <footer>
     <span>Black Desert Resort — Inner Bowl LED Ribbon Board</span>
-    <span>Concept 04 / Director's Cut / 8 second exploration</span>
+    <span>Concept 05 / Client Refinement / 10 second exploration</span>
   </footer>
 
   <template id="motionTemplate">
     <div class="orange-field"></div>
-    <div class="pulse"></div>
-    <div class="brand-lockup" aria-label="Black Desert Resort horizontal logo">
-      <img class="official-symbol" src="assets/bdr-official-symbol-white.png" alt="">
-      <span class="official-wordmark"><strong>BLACK DESERT</strong><span>RESORT</span></span>
+    <div class="logo-run" aria-label="Black Desert Resort">
+      <div class="mini-lockup"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div>
     </div>
-    <div class="copy visit">Visit.</div>
-    <div class="copy play">Play It.</div>
-    <div class="copy own">Own It.</div>
-    <div class="scene resort" aria-label="Panoramic view of Black Desert Resort"></div>
-    <div class="scene golf" aria-label="Panoramic view of the golf course"></div>
+    <div class="message visit"><strong>Visit.</strong><div class="mini-lockup" aria-label="Black Desert Resort"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div></div>
+    <div class="message own"><strong>Own It.</strong><div class="mini-lockup" aria-label="Black Desert Resort"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div></div>
+    <div class="message play"><strong>Play It.</strong><div class="mini-lockup" aria-label="Black Desert Resort"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div></div>
+    <div class="aerial-scene" aria-label="Aerial view of the Black Desert Resort property and golf course"></div>
+    <div class="end-card"><div class="mini-lockup" aria-label="Black Desert Resort"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div><span>blackdesertresort.com</span></div>
     <div class="golf-ball" aria-label="Animated golf ball"></div>
   </template>
 
