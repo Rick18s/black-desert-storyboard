@@ -160,39 +160,15 @@
     .brand {
       left: 50%;
       top: 50%;
-      display: flex;
-      align-items: center;
-      gap: 20px;
       transform: translate(-50%, 90%);
       opacity: 0;
       color: white;
     }
 
-    .brand-mark {
-      width: clamp(35px, 4vw, 72px);
-      height: clamp(42px, 4.8vw, 86px);
-      background:
-        linear-gradient(currentColor 0 0) 0 0 / 78% 21%,
-        linear-gradient(currentColor 0 0) 0 39% / 100% 21%,
-        linear-gradient(currentColor 0 0) 0 78% / 82% 21%;
-      background-repeat: no-repeat;
-      clip-path: polygon(0 0, 78% 0, 100% 18%, 80% 32%, 100% 50%, 80% 68%, 100% 84%, 78% 100%, 0 100%);
-    }
-
-    .brand-name {
-      display: flex;
-      flex-direction: column;
-      font-size: clamp(22px, 2.2vw, 42px);
-      letter-spacing: .06em;
-      line-height: 1;
-      text-align: center;
-    }
-
-    .brand-name small {
-      margin-top: 9px;
-      font-size: .52em;
-      letter-spacing: .42em;
-      text-indent: .42em;
+    .brand-logo {
+      display: block;
+      width: clamp(170px, 18vw, 350px);
+      height: auto;
     }
 
     .message {
@@ -383,20 +359,11 @@
       position: absolute;
       left: 50%;
       top: 9%;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       transform: translateX(-50%);
-      white-space: nowrap;
     }
 
-    .vertical-brand .brand-mark {
-      width: 19px;
-      height: 24px;
-    }
-
-    .vertical-brand .brand-name {
-      font-size: 9px;
+    .vertical-brand .brand-logo {
+      width: clamp(70px, 7vw, 120px);
     }
 
     .vertical-message {
@@ -580,8 +547,7 @@
             <div class="orange"></div>
 
             <div class="brand">
-              <i class="brand-mark"></i>
-              <b class="brand-name">BLACK DESERT<small>RESORT</small></b>
+              <img class="brand-logo" src="assets/black-desert-logo-white.png" alt="Black Desert Resort">
             </div>
 
             <div class="message">Visit.</div>
@@ -632,8 +598,7 @@
           <div class="format-label"><span>Vertical display</span><span>Recomposed</span></div>
           <div class="format-screen vertical">
             <div class="vertical-brand">
-              <i class="brand-mark"></i>
-              <b class="brand-name">BLACK DESERT<small>RESORT</small></b>
+              <img class="brand-logo" src="assets/black-desert-logo-white.png" alt="Black Desert Resort">
             </div>
             <div class="vertical-message">Play it.<small>blackdesertresort.com</small></div>
           </div>
