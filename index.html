@@ -331,7 +331,7 @@
       aspect-ratio: 10000 / 2962;
       background:
         linear-gradient(90deg, rgba(7,7,6,.72), transparent 56%),
-        url("assets/playit2.jpg") center / cover no-repeat;
+        url("assets/ownit.jpg") center / cover no-repeat;
     }
 
     .format-screen.interior {
@@ -583,7 +583,7 @@
         <article class="format-card">
           <div class="format-label"><span>Exterior media mesh</span><span>4-second animation</span></div>
           <div class="format-screen exterior">
-            <div class="format-copy">Play it.</div>
+            <div class="format-copy">Own It.</div>
           </div>
         </article>
 
@@ -600,7 +600,7 @@
             <div class="vertical-brand">
               <img class="brand-logo" src="assets/black-desert-logo-white.png" alt="Black Desert Resort">
             </div>
-            <div class="vertical-message">Play it.<small>blackdesertresort.com</small></div>
+            <div class="vertical-message">Play It.<small>blackdesertresort.com</small></div>
           </div>
         </article>
       </div>
@@ -634,7 +634,7 @@
         <article class="card">
           <b>03</b>
           <strong>Hold</strong>
-          <p>Visit, Play it and Own it each receive their own moment with a dedicated image.</p>
+          <p>Visit, Own It and Play It each receive their own moment with a dedicated image.</p>
         </article>
         <article class="card">
           <b>04</b>
@@ -668,9 +668,9 @@
       ["Flood completes", "The screen becomes a clean branded field."],
       ["Logo reveals", "The resort lockup rises through a mask."],
       ["Visit.", "The first message appears alone, then clears."],
-      ["Play it.", "A new photograph and phrase enter together."],
-      ["Play it exits", "The message clears completely."],
-      ["Own it.", "The final phrase receives its own image and hold."],
+      ["Own It.", "The golf photograph and phrase enter together."],
+      ["Own It exits", "The message clears completely."],
+      ["Play It.", "The final phrase receives its own image and hold."],
       ["End card", "Logo and URL conclude the sequence."]
     ];
 
@@ -715,13 +715,13 @@
         msgIn = range(p, .24, .29);
         msgOut = range(p, .37, .42);
       } else if (p >= .40 && p < .66) {
-        visual = play;
-        setMessage("Play it.");
+        visual = own;
+        setMessage("Own It.");
         msgIn = range(p, .43, .49);
         msgOut = range(p, .59, .65);
       } else if (p >= .63 && p < .88) {
-        visual = own;
-        setMessage("Own it.");
+        visual = play;
+        setMessage("Play It.");
         msgIn = range(p, .66, .72);
         msgOut = range(p, .82, .87);
       }
