@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Black Desert Resort — Inner Bowl LED Ribbon Board</title>
+  <meta name="description" content="Interactive motion concept for the Black Desert Resort inner bowl LED ribbon board.">
+  <style>
+    @font-face {
+      font-family: "Avenir BDR";
+      src: url("assets/AvenirLTStd-Roman.otf") format("opentype");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Avenir BDR";
+      src: url("assets/AvenirLTStd-Heavy.otf") format("opentype");
+      font-weight: 800;
+    }
+
+    :root {
+      --orange: #d96117;
+      --ink: #11100e;
+      --paper: #f1ede5;
+      --line: rgba(255,255,255,.14);
+      --duration: 8s;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--ink);
+    }
+
+    body {
+      margin: 0;
+      color: white;
+      background: var(--ink);
+      font-family: "Avenir BDR", Arial, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 4vw;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(17,16,14,.82);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar strong {
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .topbar span {
+      color: rgba(255,255,255,.55);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .version-tabs {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .version-tab {
+      padding: 8px 13px;
+      color: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .version-tab:hover { color: white; border-color: rgba(255,255,255,.45); }
+
+    .version-tab.active {
+      color: white;
+      border-color: var(--orange);
+      background: var(--orange);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-content: center;
+      gap: 46px;
+      padding: 120px 6vw 70px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 46%, rgba(217,97,23,.13), transparent 33%),
+        linear-gradient(#151411, #090908);
+    }
+
+    .hero-copy {
+      display: grid;
+      grid-template-columns: 1fr .55fr;
+      align-items: end;
+      gap: 7vw;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin: 0;
+      font-size: clamp(52px, 7vw, 118px);
+      letter-spacing: -.06em;
+      line-height: .88;
+    }
+
+    .lead {
+      max-width: 540px;
+      margin: 0;
+      color: rgba(255,255,255,.62);
+      font-size: clamp(17px, 1.4vw, 23px);
+      line-height: 1.48;
+    }
+
+    .bowl {
+      position: relative;
+      height: min(48vw, 540px);
+      min-height: 340px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 52% 52% 8px 8px / 42% 42% 8px 8px;
+      background:
+        radial-gradient(ellipse at 50% 108%, #1d3d25 0 18%, transparent 18.5%),
+        radial-gradient(ellipse at 50% 107%, transparent 0 29%, #262724 29.5% 39%, transparent 39.5%),
+        radial-gradient(ellipse at 50% 106%, transparent 0 43%, #393a36 43.5% 51%, transparent 51.5%),
+        linear-gradient(#070707 0 25%, #181816 25% 100%);
+      box-shadow: 0 45px 110px rgba(0,0,0,.5);
+    }
+
+    .bowl::before {
+      content: "";
+      position: absolute;
+      inset: 20% 1.5% 18%;
+      opacity: .48;
+      background:
+        radial-gradient(circle, #d7c9aa 0 1px, transparent 1.7px) 0 0 / 13px 11px,
+        radial-gradient(circle, #8a5f43 0 1px, transparent 1.8px) 6px 4px / 17px 14px;
+      mask-image: linear-gradient(transparent 0 5%, black 20% 72%, transparent 94%);
+    }
+
+    .bowl::after {
+      content: "INNER BOWL — CONCEPTUAL PLACEMENT";
+      position: absolute;
+      right: 2.5%;
+      top: 6%;
+      color: rgba(255,255,255,.35);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+
+    .stadium-light {
+      position: absolute;
+      top: -8%;
+      width: 13%;
+      height: 42%;
+      opacity: .22;
+      background: linear-gradient(transparent, white);
+      clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+    }
+
+    .stadium-light.one { left: 8%; }
+    .stadium-light.two { right: 8%; }
+
+    .ribbon-shell {
+      position: absolute;
+      z-index: 5;
+      left: -2%;
+      right: -2%;
+      top: 42%;
+      height: clamp(44px, 6vw, 82px);
+      overflow: hidden;
+      border-block: 4px solid #050505;
+      background: #050505;
+      box-shadow: 0 0 30px rgba(217,97,23,.23);
+      transform: perspective(1000px) rotateX(-3deg);
+    }
+
+    .ribbon-track {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      animation: travel var(--duration) linear infinite;
+      will-change: transform;
+    }
+
+    .ribbon-track.paused { animation-play-state: paused; }
+
+    @keyframes travel {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .ribbon-module {
+      flex: 0 0 50%;
+      display: grid;
+      grid-template-columns: 12.5fr 16.7fr 11.1fr 11.8fr 10.4fr 12.5fr 12.5fr 12.5fr;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .panel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      overflow: hidden;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    .panel.orange { background: var(--orange); }
+    .panel.paper { color: var(--ink); background: var(--paper); }
+    .panel.black { color: white; background: #0c0c0b; }
+
+    .panel-copy {
+      white-space: nowrap;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(15px, 2vw, 34px);
+      letter-spacing: -.04em;
+    }
+
+    .horizontal-logo {
+      display: flex;
+      align-items: center;
+      gap: clamp(5px, .7vw, 12px);
+      color: white;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: clamp(18px, 2.4vw, 40px);
+      aspect-ratio: .78;
+    }
+
+    .brand-mark i {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 16%;
+      border-radius: 0 50% 50% 0;
+      background: white;
+      transform: skewY(-3deg);
+    }
+
+    .brand-mark i:nth-child(1) { top: 2%; }
+    .brand-mark i:nth-child(2) { top: 22%; transform: skewY(2deg); }
+    .brand-mark i:nth-child(3) { top: 42%; }
+    .brand-mark i:nth-child(4) { top: 62%; transform: skewY(2deg); }
+    .brand-mark i:nth-child(5) { top: 82%; }
+
+    .brand-name {
+      display: grid;
+      line-height: .92;
+      letter-spacing: .08em;
+    }
+
+    .brand-name strong {
+      font-size: clamp(8px, 1.05vw, 18px);
+    }
+
+    .brand-name span {
+      font-size: clamp(5px, .62vw, 11px);
+      letter-spacing: .35em;
+    }
+
+    .photo {
+      background-position: center;
+      background-size: cover;
+    }
+
+    .photo.golf { background-image: url("assets/ownit.jpg"); }
+    .photo.resort { background-image: url("assets/visit.jpg"); }
+    .photo.outdoor { background-image: url("assets/playit2.jpg"); }
+
+    .field-label {
+      position: absolute;
+      left: 50%;
+      bottom: 7%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.38);
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .control {
+      min-width: 98px;
+      padding: 12px 17px;
+      color: white;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .control:hover,
+    .control.active {
+      border-color: var(--orange);
+      background: var(--orange);
+    }
+
+    .concept {
+      padding: 9vw 6vw;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr .55fr;
+      align-items: end;
+      gap: 7vw;
+      margin-bottom: 60px;
+    }
+
+    .section-head h2 {
+      max-width: 960px;
+      margin: 0;
+      font-size: clamp(46px, 6.4vw, 108px);
+      letter-spacing: -.06em;
+      line-height: .9;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: #665f56;
+      font-size: clamp(16px, 1.35vw, 22px);
+      line-height: 1.5;
+    }
+
+    .technical-frame {
+      overflow: hidden;
+      border: 10px solid #171613;
+      background: #171613;
+      box-shadow: 0 24px 70px rgba(31,25,18,.18);
+    }
+
+    .technical-frame .ribbon-shell {
+      position: relative;
+      inset: auto;
+      height: clamp(56px, 8vw, 118px);
+      border: 0;
+      transform: none;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid #c9c1b5;
+      border-top: 0;
+    }
+
+    .spec {
+      padding: 20px;
+      border-right: 1px solid #c9c1b5;
+    }
+
+    .spec:last-child { border: 0; }
+
+    .spec small {
+      display: block;
+      margin-bottom: 6px;
+      color: #82796e;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .spec strong { font-size: clamp(17px, 1.6vw, 25px); }
+
+    .story {
+      padding: 9vw 6vw;
+      background: #12110f;
+    }
+
+    .story h2 {
+      max-width: 800px;
+      margin: 0 0 55px;
+      font-size: clamp(45px, 6vw, 100px);
+      letter-spacing: -.055em;
+      line-height: .92;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .story-card {
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: #181714;
+    }
+
+    .story-card.orange-card { background: var(--orange); }
+
+    .story-card b {
+      color: rgba(255,255,255,.54);
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .story-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 3.2vw, 54px);
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: rgba(255,255,255,.58);
+      line-height: 1.45;
+    }
+
+    .image-triptych {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      min-height: 310px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .image-triptych div {
+      background-position: center;
+      background-size: cover;
+    }
+
+    .note {
+      padding: 7vw 6vw;
+      color: var(--ink);
+      background: var(--orange);
+    }
+
+    .note p {
+      max-width: 1100px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(31px, 4.2vw, 72px);
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 32px 6vw;
+      color: rgba(255,255,255,.45);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 800px) {
+      .hero-copy,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .bowl {
+        height: 360px;
+        border-radius: 38% 38% 8px 8px / 24% 24% 8px 8px;
+      }
+
+      .ribbon-module {
+        grid-template-columns: 16fr 20fr 15fr 16fr 15fr 18fr 18fr 18fr;
+      }
+
+      .specs,
+      .story-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .image-triptych { grid-column: span 2; }
+      .topbar span { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .topbar strong { display: none; }
+      .topbar { justify-content: center; }
+      .story-grid,
+      .specs { grid-template-columns: 1fr; }
+      .image-triptych { grid-column: auto; }
+      .spec { border-right: 0; border-bottom: 1px solid #c9c1b5; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ribbon-track { animation-play-state: paused; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <strong>Black Desert Resort</strong>
+    <div class="version-tabs" aria-label="Concept versions">
+      <a class="version-tab active" href="previous-concept.html" aria-current="page">Concept 01 · 8 sec</a>
+      <a class="version-tab" href="index.html">Concept 02 · 4 sec</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div>
+          <p class="eyebrow">Inner Bowl LED ribbon board</p>
+          <h1>A panoramic journey around the bowl.</h1>
+        </div>
+        <p class="lead">
+          An eight-second panoramic loop that carries the Black Desert Resort story around
+          the bowl through distinct brand, message and image panels.
+        </p>
+      </div>
+
+      <div class="bowl">
+        <i class="stadium-light one"></i>
+        <i class="stadium-light two"></i>
+        <div class="ribbon-shell">
+          <div class="ribbon-track" data-ribbon></div>
+        </div>
+        <span class="field-label">Conceptual in-bowl visualization</span>
+      </div>
+
+      <div class="controls" aria-label="Animation controls">
+        <button class="control" id="toggleMotion" type="button">Pause</button>
+        <button class="control active" data-speed="8s" type="button">8 sec loop</button>
+        <button class="control" data-speed="12s" type="button">Slower</button>
+      </div>
+    </section>
+
+    <section class="concept">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Full ribbon preview</p>
+          <h2>A continuous destination showcase.</h2>
+        </div>
+        <p>
+          The content is composed as one long modular canvas. The orange brand field leads
+          into the horizontal lockup, campaign messages and three panoramic destination views.
+        </p>
+      </div>
+
+      <div class="technical-frame">
+        <div class="ribbon-shell">
+          <div class="ribbon-track" data-ribbon></div>
+        </div>
+      </div>
+      <div class="specs">
+        <div class="spec"><small>Canvas</small><strong>11520 × 180 px</strong></div>
+        <div class="spec"><small>Frame rate</small><strong>29.97 fps</strong></div>
+        <div class="spec"><small>Duration</small><strong>8 seconds</strong></div>
+        <div class="spec"><small>Direction</small><strong>Horizontal travel</strong></div>
+      </div>
+    </section>
+
+    <section class="story">
+      <p class="eyebrow">Sequence breakdown</p>
+      <h2>Clear messages. Expansive imagery.</h2>
+      <div class="story-grid">
+        <article class="story-card orange-card">
+          <b>01 — Brand field</b>
+          <div>
+            <strong>Flood</strong>
+            <p>Orange enters first and creates a strong visual handoff around the bowl.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <b>02 — Identity</b>
+          <div>
+            <strong>Logo</strong>
+            <p>The horizontal lockup follows as a clean, isolated brand moment.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <b>03–05 — Copy</b>
+          <div>
+            <strong>Visit.<br>Play It.<br>Own It.</strong>
+            <p>Short messages move as individual panels, never placed over photography.</p>
+          </div>
+        </article>
+
+        <div class="image-triptych" aria-label="Golf, resort and outdoor image panels">
+          <div class="photo golf"></div>
+          <div class="photo resort"></div>
+          <div class="photo outdoor"></div>
+        </div>
+
+        <article class="story-card">
+          <b>06–08 — Imagery</b>
+          <div>
+            <strong>Side by side.</strong>
+            <p>Golf, resort and outdoor imagery complete the loop as adjacent cinematic panels.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="note">
+      <p>A spacious motion system that uses the full width of the ribbon to present the resort with clarity and scale.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Black Desert Resort — Inner Bowl LED Ribbon Board</span>
+    <span>Concept 01 / 8 second panoramic loop</span>
+  </footer>
+
+  <template id="ribbonModule">
+    <div class="ribbon-module">
+      <div class="panel orange"></div>
+      <div class="panel orange">
+        <div class="horizontal-logo" aria-label="Black Desert Resort horizontal logo">
+          <span class="brand-mark"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="brand-name"><strong>BLACK DESERT</strong><span>RESORT</span></span>
+        </div>
+      </div>
+      <div class="panel paper"><span class="panel-copy">Visit.</span></div>
+      <div class="panel black"><span class="panel-copy">Play It.</span></div>
+      <div class="panel orange"><span class="panel-copy">Own It.</span></div>
+      <div class="panel photo golf" aria-label="Golf image"></div>
+      <div class="panel photo resort" aria-label="Resort image"></div>
+      <div class="panel photo outdoor" aria-label="Outdoor image"></div>
+    </div>
+  </template>
+
+  <script>
+    const template = document.querySelector("#ribbonModule");
+    const tracks = [...document.querySelectorAll("[data-ribbon]")];
+
+    tracks.forEach(track => {
+      track.append(template.content.cloneNode(true));
+      track.append(template.content.cloneNode(true));
+    });
+
+    const toggle = document.querySelector("#toggleMotion");
+    const speedButtons = [...document.querySelectorAll("[data-speed]")];
+
+    toggle.addEventListener("click", () => {
+      const paused = tracks[0].classList.toggle("paused");
+      tracks.slice(1).forEach(track => track.classList.toggle("paused", paused));
+      toggle.textContent = paused ? "Play" : "Pause";
+      toggle.classList.toggle("active", paused);
+    });
+
+    speedButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        document.documentElement.style.setProperty("--duration", button.dataset.speed);
+        speedButtons.forEach(item => item.classList.toggle("active", item === button));
+      });
+    });
+  </script>
+</body>
+</html>
