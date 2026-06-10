@@ -300,18 +300,34 @@
       inset: 0;
       opacity: 0;
       overflow: hidden;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange) 50%, #e47728);
     }
 
     .scene::before {
       content: "";
       position: absolute;
-      inset: 0 -8%;
+      inset: 0 16%;
       background-position: center;
-      background-size: 100% 200%;
+      background-size: cover;
       background-repeat: no-repeat;
       animation-duration: var(--duration);
       animation-timing-function: linear;
       animation-iteration-count: infinite;
+    }
+
+    .scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg,
+          var(--orange-dark) 0%,
+          rgba(190, 76, 23, .96) 13%,
+          rgba(207, 91, 28, 0) 31%,
+          rgba(207, 91, 28, 0) 69%,
+          rgba(219, 101, 30, .96) 87%,
+          #e47728 100%);
     }
 
     .scene.resort {
@@ -321,7 +337,7 @@
 
     .scene.resort::before {
       background-image: url("assets/resort-panorama.jpg");
-      background-position: center top;
+      background-position: center 36%;
       animation-name: resortPan;
     }
 

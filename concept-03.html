@@ -371,6 +371,7 @@
       inset: 0;
       opacity: 0;
       overflow: hidden;
+      background: linear-gradient(90deg, var(--orange-deep), var(--orange) 50%, #e47728);
       clip-path: inset(0 100% 0 0);
       animation-name: panoramaReveal;
     }
@@ -378,8 +379,8 @@
     .panorama-reveal::before {
       content: "";
       position: absolute;
-      inset: 0 -8%;
-      background: url("assets/resort-panorama.jpg") center top / 100% 200% no-repeat;
+      inset: 0 16%;
+      background: url("assets/resort-panorama.jpg") center 36% / cover no-repeat;
       transform: translateX(7%) scale(1.07);
       animation: panoramaSweep var(--duration) linear infinite;
     }
@@ -388,7 +389,14 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(217,97,23,.2), transparent 24% 82%, rgba(17,16,14,.18));
+      background:
+        linear-gradient(90deg,
+          var(--orange-deep) 0%,
+          rgba(190, 76, 23, .96) 13%,
+          rgba(207, 91, 28, 0) 31%,
+          rgba(207, 91, 28, 0) 69%,
+          rgba(219, 101, 30, .96) 87%,
+          #e47728 100%);
     }
 
     @keyframes panoramaReveal {
