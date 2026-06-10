@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Black Desert Resort — Panoramic Ribbon Board Concept</title>
-  <meta name="description" content="Interactive four-second panoramic resort motion concept for the Black Desert Resort inner bowl LED ribbon board.">
+  <title>Black Desert Resort — 4 Second Ribbon Board Concept</title>
+  <meta name="description" content="Interactive four-second golf ball motion concept for the Black Desert Resort inner bowl LED ribbon board.">
   <style>
     @font-face {
       font-family: "Avenir BDR";
@@ -203,7 +203,7 @@
       position: absolute;
       inset: 0;
       opacity: .28;
-      background: url("assets/resort-panorama.jpg") center 54% / cover no-repeat;
+      background: url("assets/ownit.jpg") center 54% / cover no-repeat;
       filter: saturate(.9) contrast(1.05);
       animation-name: basePhoto;
     }
@@ -365,42 +365,31 @@
       100% { left: 104%; top: 50%; transform: rotate(1620deg); }
     }
 
-    .panorama-reveal {
+    .image-run {
       position: absolute;
       z-index: 7;
       inset: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
       opacity: 0;
-      overflow: hidden;
-      clip-path: inset(0 100% 0 0);
-      animation-name: panoramaReveal;
+      transform: translateX(24%);
+      animation-name: imageRun;
     }
 
-    .panorama-reveal::before {
-      content: "";
-      position: absolute;
-      inset: -4% -12%;
-      background: url("assets/resort-panorama.jpg") center 55% / cover no-repeat;
-      transform: translateX(7%) scale(1.07);
-      animation: panoramaSweep var(--duration) linear infinite;
+    .image-run div {
+      background-position: center;
+      background-size: cover;
     }
 
-    .panorama-reveal::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(217,97,23,.2), transparent 24% 82%, rgba(17,16,14,.18));
-    }
+    .image-run div:nth-child(1) { background-image: url("assets/ownit.jpg"); }
+    .image-run div:nth-child(2) { background-image: url("assets/visit.jpg"); }
+    .image-run div:nth-child(3) { background-image: url("assets/playit2.jpg"); }
 
-    @keyframes panoramaReveal {
-      0%, 72% { opacity: 0; clip-path: inset(0 100% 0 0); }
-      80% { opacity: 1; clip-path: inset(0 74% 0 0); }
-      92%, 97% { opacity: 1; clip-path: inset(0); }
-      100% { opacity: 0; clip-path: inset(0 0 0 100%); }
-    }
-
-    @keyframes panoramaSweep {
-      0%, 72% { transform: translateX(7%) scale(1.07); }
-      100% { transform: translateX(-7%) scale(1.07); }
+    @keyframes imageRun {
+      0%, 77% { opacity: 0; transform: translateX(24%); }
+      87%, 96% { opacity: 1; transform: translateX(0); }
+      100% { opacity: 0; transform: translateX(-8%); }
     }
 
     .impact {
@@ -567,7 +556,7 @@
       color: white;
       background:
         linear-gradient(90deg, rgba(17,16,14,.08), rgba(17,16,14,.62)),
-        url("assets/resort-panorama.jpg") center / cover no-repeat;
+        url("assets/ownit.jpg") center / cover no-repeat;
     }
 
     .closing-statement p {
@@ -625,8 +614,8 @@
     <strong>Black Desert Resort</strong>
     <div class="version-tabs" aria-label="Concept versions">
       <a class="version-tab" href="previous-concept.html">Concept 01 · 8 sec</a>
-      <a class="version-tab" href="concept-02.html">Concept 02 · 4 sec</a>
-      <a class="version-tab active" href="index.html" aria-current="page">Concept 03 · Panorama</a>
+      <a class="version-tab active" href="concept-02.html" aria-current="page">Concept 02 · 4 sec</a>
+      <a class="version-tab" href="index.html">Concept 03 · Panorama</a>
     </div>
   </nav>
 
@@ -635,11 +624,11 @@
       <div class="hero-copy">
         <div>
           <p class="eyebrow">Inner Bowl LED ribbon board</p>
-          <h1>The resort in motion.</h1>
+          <h1>Play in motion.</h1>
         </div>
         <p class="lead">
-          A golf ball guides the audience through the brand and campaign messages before
-          revealing one expansive panoramic view of Black Desert Resort.
+          A golf ball travels across the ribbon and guides the audience through the brand,
+          campaign messages and destination imagery in one continuous four-second story.
         </p>
       </div>
 
@@ -661,12 +650,12 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Full ribbon animation</p>
-          <h2>One image. One continuous journey.</h2>
+          <h2>One action connects the entire story.</h2>
         </div>
         <p>
           The ball moves continuously from left to right, revealing the horizontal brand
-          lockup and guiding each message into view. The sequence resolves into a single
-          sweeping resort panorama, preserving clarity across the ultra-wide ribbon.
+          lockup and guiding each message into view. Copy alternates between the top and
+          bottom of the ribbon, creating energy while keeping photography clean.
         </p>
       </div>
 
@@ -678,7 +667,7 @@
         <div class="spec"><small>Canvas</small><strong>11520 × 180 px</strong></div>
         <div class="spec"><small>Frame rate</small><strong>29.97 fps</strong></div>
         <div class="spec"><small>Total duration</small><strong>4 seconds</strong></div>
-        <div class="spec"><small>Visual finish</small><strong>Panoramic sweep</strong></div>
+        <div class="spec"><small>Loop action</small><strong>Golf ball travel</strong></div>
       </div>
     </section>
 
@@ -700,7 +689,7 @@
         </article>
         <article class="beat">
           <b>2.9–3.8 sec</b>
-          <div><strong>Resort reveal</strong><p>One panoramic resort image opens across the entire ribbon.</p></div>
+          <div><strong>Three views</strong><p>Golf, resort and outdoor images enter side by side.</p></div>
         </article>
         <article class="beat">
           <b>3.8–4.0 sec</b>
@@ -710,13 +699,13 @@
     </section>
 
     <section class="closing-statement">
-      <p>One expansive resort view gives the ribbon scale, clarity and a cinematic sense of place.</p>
+      <p>A playful motion system designed to make Black Desert Resort feel active, premium and unmistakably connected to golf.</p>
     </section>
   </main>
 
   <footer>
     <span>Black Desert Resort — Inner Bowl LED Ribbon Board</span>
-    <span>Concept 03 / 4 second panoramic loop</span>
+    <span>Concept 02 / 4 second seamless loop</span>
   </footer>
 
   <template id="motionTemplate">
@@ -730,7 +719,9 @@
     <div class="copy visit">Visit.</div>
     <div class="copy play">Play It.</div>
     <div class="copy own">Own It.</div>
-    <div class="panorama-reveal" aria-label="Sweeping panoramic view of Black Desert Resort"></div>
+    <div class="image-run" aria-label="Golf, resort and outdoor imagery">
+      <div></div><div></div><div></div>
+    </div>
     <div class="golf-ball" aria-label="Animated golf ball"></div>
   </template>
 
