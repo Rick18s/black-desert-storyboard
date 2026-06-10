@@ -305,9 +305,9 @@
     .scene::before {
       content: "";
       position: absolute;
-      inset: -8% -13%;
+      inset: 0 -8%;
       background-position: center;
-      background-size: cover;
+      background-size: 100% 100%;
       animation-duration: var(--duration);
       animation-timing-function: linear;
       animation-iteration-count: infinite;
@@ -319,7 +319,7 @@
     }
 
     .scene.resort::before {
-      background-image: url("assets/resort-panorama.jpg");
+      background-image: url("assets/resort-ribbon-crop.jpg");
       animation-name: resortPan;
     }
 
@@ -341,7 +341,7 @@
     }
 
     .scene.golf::before {
-      background-image: url("assets/golf-panorama.jpg");
+      background-image: url("assets/golf-ribbon-crop.jpg");
       animation-name: golfPan;
     }
 
