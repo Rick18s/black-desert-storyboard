@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marquee Motion Concept</title>
+  <style>
+    :root {
+      --orange: #f15a24;
+      --orange-deep: #d84410;
+      --ink: #11100e;
+      --paper: #f3efe8;
+      --muted: #8c877f;
+      --line: #d8d1c7;
+    }
+
+    * { box-sizing: border-box; }
+
+    @font-face {
+      font-family: "Avenir BDR";
+      src: url("assets/AvenirLTStd-Roman.otf") format("opentype");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Avenir BDR";
+      src: url("assets/AvenirLTStd-Heavy.otf") format("opentype");
+      font-weight: 800;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #ded9d1;
+      color: var(--ink);
+      font-family: "Avenir BDR", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 42px;
+    }
+
+    .board {
+      width: 1920px;
+      padding: 64px 72px 70px;
+      background: var(--paper);
+      box-shadow: 0 24px 80px rgba(31, 24, 15, .18);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+
+    .eyebrow {
+      margin: 0 0 11px;
+      color: var(--orange-deep);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 66px;
+      font-weight: 660;
+      letter-spacing: -.055em;
+      line-height: .95;
+    }
+
+    .summary {
+      margin: 0;
+      color: #55514b;
+      font-size: 22px;
+      line-height: 1.42;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 17px;
+      font-size: 18px;
+      font-weight: 760;
+      letter-spacing: .02em;
+    }
+
+    .section-label span {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .frames {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px 18px;
+      margin-bottom: 38px;
+    }
+
+    .card {
+      min-width: 0;
+    }
+
+    .screen {
+      position: relative;
+      aspect-ratio: 16 / 5;
+      overflow: hidden;
+      background: var(--ink);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+    }
+
+    .step {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(17,16,14,.84);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .action {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+      color: #4d4943;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .time {
+      flex: 0 0 auto;
+      color: var(--orange-deep);
+      font-weight: 800;
+    }
+
+    .flood::before {
+      content: "";
+      position: absolute;
+      inset: 0 31% 0 0;
+      background: var(--orange);
+    }
+
+    .flood::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 28%;
+      width: 8%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), rgba(244,81,30,0));
+    }
+
+    .flood-start::before {
+      inset: 0 82% 0 0;
+    }
+
+    .flood-start::after {
+      right: 78%;
+    }
+
+    .flood-complete::before {
+      inset: 0;
+    }
+
+    .flood-complete::after {
+      display: none;
+    }
+
+    .logo-screen { background: var(--orange); }
+
+    .logo-screen .logo {
+      gap: 8px;
+    }
+
+    .logo-screen .logo-mark {
+      width: 22px;
+      height: 27px;
+    }
+
+    .logo-screen .logo-type {
+      font-size: 11px;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 34px;
+      background:
+        linear-gradient(currentColor 0 0) 0 0 / 22px 7px,
+        linear-gradient(currentColor 0 0) 0 13px / 28px 7px,
+        linear-gradient(currentColor 0 0) 0 26px / 23px 7px;
+      background-repeat: no-repeat;
+      clip-path: polygon(0 0, 78% 0, 100% 18%, 80% 32%, 100% 50%, 80% 68%, 100% 84%, 78% 100%, 0 100%);
+    }
+
+    .logo-type {
+      display: flex;
+      flex-direction: column;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: .05em;
+      line-height: 1.05;
+      text-align: center;
+    }
+
+    .logo-type small {
+      margin-top: 4px;
+      font-size: .55em;
+      letter-spacing: .38em;
+      text-indent: .38em;
+    }
+
+    .logo-note {
+      position: absolute;
+      right: 14px;
+      bottom: 11px;
+      color: rgba(255,255,255,.6);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .word-screen {
+      display: flex;
+      align-items: center;
+      padding-left: 28px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .word-screen.orange {
+      background: var(--orange);
+      color: white;
+    }
+
+    .word-screen.orange .dot {
+      color: white;
+    }
+
+    .word-screen.exit .word {
+      transform: translateY(-78%);
+      opacity: .32;
+    }
+
+    .word-screen.exit::after {
+      content: "";
+      position: absolute;
+      inset: 50% 0 0;
+      background: var(--paper);
+    }
+
+    .word-screen.orange.exit::after {
+      background: var(--orange);
+    }
+
+    .word {
+      font-size: 36px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .85;
+    }
+
+    .word .dot { color: var(--orange); }
+
+    .split {
+      display: grid;
+      grid-template-columns: 47% 53%;
+      background: var(--paper);
+    }
+
+    .split .word {
+      font-size: 32px;
+    }
+
+    .split.enter .split-copy {
+      overflow: hidden;
+    }
+
+    .split.enter .word {
+      transform: translateY(42%);
+      opacity: .48;
+    }
+
+    .split.exit .word {
+      transform: translateY(-58%);
+      opacity: .28;
+    }
+
+    .split.exit .image {
+      filter: brightness(.7);
+    }
+
+    .split-copy {
+      display: flex;
+      align-items: center;
+      padding-left: 27px;
+    }
+
+    .image {
+      position: relative;
+      overflow: hidden;
+      background: url("assets/playit2.jpg") center / cover no-repeat;
+    }
+
+    .image.alt {
+      background: url("assets/ownit.jpg") center / cover no-repeat;
+    }
+
+    .photo-label {
+      position: absolute;
+      z-index: 2;
+      right: 11px;
+      bottom: 9px;
+      padding: 4px 7px;
+      background: rgba(17,16,14,.72);
+      color: white;
+      font-size: 8px;
+      font-weight: 750;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .inside {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .inside .screen {
+      aspect-ratio: 16 / 4.25;
+    }
+
+    .inside-feature {
+      display: grid;
+      grid-template-columns: 48% 52%;
+      background: var(--ink);
+      color: white;
+    }
+
+    .inside-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .inside-copy small {
+      margin-bottom: 9px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .inside-copy strong {
+      max-width: 330px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .9;
+    }
+
+    .inside-image {
+      background:
+        linear-gradient(90deg, rgba(17,16,14,.35), transparent 35%),
+        url("assets/visit.jpg") center 43% / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inside-end {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: var(--orange);
+      color: white;
+    }
+
+    .inside-end .logo {
+      position: static;
+      transform: none;
+    }
+
+    .inside-end .logo-type {
+      font-size: 12px;
+    }
+
+    .inside-end .logo-mark {
+      width: 28px;
+      height: 34px;
+    }
+
+    .cta {
+      max-width: 135px;
+      font-size: 7px;
+      font-weight: 760;
+      letter-spacing: .035em;
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      padding-top: 25px;
+      border-top: 1px solid var(--line);
+    }
+
+    footer strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    footer p {
+      margin: 0;
+      color: #625d56;
+      font-size: 14px;
+      line-height: 1.42;
+    }
+  </style>
+</head>
+<body>
+  <main class="board">
+    <header>
+      <div>
+        <p class="eyebrow">Static mockup / storyboard</p>
+        <h1>Clean motion.<br>One confident idea.</h1>
+      </div>
+      <p class="summary">
+        Each message appears on its own. The storyboard isolates every animation action:
+        orange flood, logo reveal, upward text reveal, hold and clean exit before the next
+        message begins.
+      </p>
+    </header>
+
+    <section>
+      <h2 class="section-label">Exterior marquee <span>one 4-second spot, demonstrated action by action</span></h2>
+      <div class="frames">
+        <article class="card">
+          <div class="screen flood flood-start"><span class="step">01</span></div>
+          <div class="caption"><span><b class="action">Flood begins</b>Orange enters from the left edge</span><span class="time">0.0s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen flood flood-complete"><span class="step">02</span></div>
+          <div class="caption"><span><b class="action">Flood completes</b>Orange fills the full display</span><span class="time">0.3s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen logo-screen">
+            <span class="step">03</span>
+            <div class="logo">
+              <i class="logo-mark"></i>
+              <b class="logo-type">BLACK DESERT<small>RESORT</small></b>
+            </div>
+          </div>
+          <div class="caption"><span><b class="action">Logo reveals</b>Lockup moves upward through a mask</span><span class="time">0.6s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen word-screen orange">
+            <span class="step">04</span>
+            <div class="word">Visit<span class="dot">.</span></div>
+          </div>
+          <div class="caption"><span><b class="action">Visit enters</b>One phrase reveals upward and holds</span><span class="time">1.1s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen word-screen orange exit">
+            <span class="step">05</span>
+            <div class="word">Visit<span class="dot">.</span></div>
+          </div>
+          <div class="caption"><span><b class="action">Visit exits</b>Phrase lifts away before image changes</span><span class="time">1.7s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen split enter">
+            <span class="step">06</span>
+            <div class="split-copy"><div class="word">Play it<span class="dot">.</span></div></div>
+            <div class="image"></div>
+          </div>
+          <div class="caption"><span><b class="action">Play it enters</b>New image appears; phrase reveals beside it</span><span class="time">2.0s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen split exit">
+            <span class="step">07</span>
+            <div class="split-copy"><div class="word">Play it<span class="dot">.</span></div></div>
+            <div class="image"></div>
+          </div>
+          <div class="caption"><span><b class="action">Play it exits</b>Text clears completely for next message</span><span class="time">2.7s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen split enter">
+            <span class="step">08</span>
+            <div class="split-copy"><div class="word">Own it<span class="dot">.</span></div></div>
+            <div class="image alt"></div>
+          </div>
+          <div class="caption"><span><b class="action">Own it enters</b>Final image and phrase reveal, then hold</span><span class="time">3.1–4.0s</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">Interior long screen <span>same sequence with longer holds and no combined messages</span></h2>
+      <div class="inside">
+        <article class="card">
+          <div class="screen inside-feature">
+            <div class="inside-copy">
+              <small>Message 01</small>
+              <strong>Visit.</strong>
+            </div>
+            <div class="inside-image"></div>
+          </div>
+          <div class="caption"><span>Visit appears alone with the lifestyle image</span><span class="time">1.5–3.5s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen inside-feature">
+            <div class="inside-copy">
+              <small>Message 02</small>
+              <strong>Play it.</strong>
+            </div>
+            <div class="image"></div>
+          </div>
+          <div class="caption"><span>Visit fully exits, then Play it begins</span><span class="time">4.0–6.0s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen inside-feature">
+            <div class="inside-copy">
+              <small>Message 03</small>
+              <strong>Own it.</strong>
+            </div>
+            <div class="image alt"></div>
+          </div>
+          <div class="caption"><span>Play it fully exits, then Own it begins</span><span class="time">6.5–8.5s</span></div>
+        </article>
+
+        <article class="card">
+          <div class="screen inside-end">
+            <div class="logo">
+              <i class="logo-mark"></i>
+              <b class="logo-type">BLACK DESERT<small>RESORT</small></b>
+            </div>
+            <span class="cta">blackdesertresort.com</span>
+          </div>
+          <div class="caption"><span>Logo and URL only on the final end card</span><span class="time">9.0–10.0s</span></div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <strong>Motion</strong>
+        <p>Ease-out movement only. No bounce, spins, rapid cuts or distracting transitions.</p>
+      </div>
+      <div>
+        <strong>Typography</strong>
+        <p>Large, short phrases. Reveal upward through a clean mask with generous hold time.</p>
+      </div>
+      <div>
+        <strong>Brand connection</strong>
+        <p>Uses the supplied campaign photography, Avenir family and Black Desert Resort lockup language.</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
