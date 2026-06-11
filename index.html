@@ -394,7 +394,7 @@
         radial-gradient(circle at 30% 27%, rgba(120,120,120,.42) 0 4%, transparent 5%) 0 0 / 23% 23%,
         radial-gradient(circle at 70% 66%, rgba(120,120,120,.32) 0 4%, transparent 5%) 0 0 / 27% 27%,
         radial-gradient(circle at 34% 27%, #fff 0 17%, #e9e7df 58%, #8d8c87 100%);
-      box-shadow: 0 3px 8px rgba(0,0,0,.5);
+      box-shadow: inset -2px -2px 4px rgba(70,70,65,.34), inset 2px 2px 3px rgba(255,255,255,.72);
       animation-name: ballTravel;
       animation-timing-function: linear;
     }
@@ -413,16 +413,7 @@
     }
 
     .golf-ball::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 90%;
-      width: 175%;
-      height: 32%;
-      border-radius: 50%;
-      background: rgba(41,25,14,.28);
-      filter: blur(2px);
-      transform: translateX(-50%);
+      content: none;
     }
 
     .cup {
@@ -441,6 +432,20 @@
       animation-name: cupReveal;
     }
 
+    .cup-rim {
+      position: absolute;
+      z-index: 13;
+      left: 95.2%;
+      top: 54%;
+      width: clamp(14px, 2.1vw, 34px);
+      height: clamp(3px, .3vw, 6px);
+      border-radius: 0 0 50% 50%;
+      opacity: 0;
+      background: linear-gradient(180deg, rgba(120,53,18,.25), #6f3216 54%, #33170d);
+      transform: translate(-50%, -12%);
+      animation-name: cupReveal;
+    }
+
     @keyframes cupReveal {
       0%, 30% { opacity: 0; }
       33%, 48% { opacity: .9; }
@@ -454,10 +459,12 @@
       24% { left: 50%; transform: translateY(-50%) rotate(980deg); }
       33% { left: 73%; transform: translateY(-50%) rotate(1490deg); }
       39% { left: 88%; top: 50%; opacity: 1; transform: translateY(-50%) rotate(1820deg); }
-      42% { left: 94.7%; top: 50%; opacity: 1; transform: translateY(-50%) rotate(1960deg) scale(1); }
-      43.2% { left: 95.2%; top: 54%; opacity: .82; transform: translateY(-50%) rotate(1990deg) scale(.72); }
-      44.5% { left: 95.2%; top: 58%; opacity: 0; transform: translateY(-50%) rotate(2010deg) scale(.25); }
-      44.6%, 100% { left: 95.2%; top: 58%; opacity: 0; transform: translateY(-50%) rotate(2010deg) scale(.25); }
+      42% { left: 94.4%; top: 50%; opacity: 1; clip-path: inset(0); transform: translateY(-50%) rotate(1960deg) scale(1); }
+      42.7% { left: 95%; top: 51%; opacity: 1; clip-path: inset(0); transform: translateY(-50%) rotate(1980deg) scale(.98); }
+      43.35% { left: 95.2%; top: 54%; opacity: 1; clip-path: inset(0 0 28%); transform: translateY(-50%) rotate(2010deg) scale(.94); }
+      44.1% { left: 95.2%; top: 57%; opacity: 1; clip-path: inset(0 0 72%); transform: translateY(-50%) rotate(2040deg) scale(.9); }
+      44.7% { left: 95.2%; top: 59%; opacity: 0; clip-path: inset(0 0 100%); transform: translateY(-50%) rotate(2060deg) scale(.88); }
+      44.8%, 100% { left: 95.2%; top: 59%; opacity: 0; clip-path: inset(0 0 100%); transform: translateY(-50%) rotate(2060deg) scale(.88); }
     }
 
     .controls {
@@ -1156,6 +1163,7 @@
     </div>
     <div class="impact-line"></div>
     <div class="cup" aria-label="Golf hole"></div>
+    <div class="cup-rim" aria-hidden="true"></div>
     <div class="golf-ball" aria-label="Animated golf ball"></div>
   </template>
 
