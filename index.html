@@ -394,7 +394,10 @@
         radial-gradient(circle at 30% 27%, rgba(120,120,120,.42) 0 4%, transparent 5%) 0 0 / 23% 23%,
         radial-gradient(circle at 70% 66%, rgba(120,120,120,.32) 0 4%, transparent 5%) 0 0 / 27% 27%,
         radial-gradient(circle at 34% 27%, #fff 0 17%, #e9e7df 58%, #8d8c87 100%);
-      box-shadow: inset -2px -2px 4px rgba(70,70,65,.34), inset 2px 2px 3px rgba(255,255,255,.72);
+      box-shadow:
+        inset -2px -2px 4px rgba(70,70,65,.34),
+        inset 2px 2px 3px rgba(255,255,255,.72),
+        2px 3px 3px rgba(39,17,7,.32);
       animation-name: ballTravel;
       animation-timing-function: linear;
     }
@@ -419,44 +422,48 @@
     .ball-shadow {
       position: absolute;
       z-index: 10;
-      left: 6%;
-      top: 57%;
-      width: clamp(11px, 1.7vw, 27px);
-      height: clamp(2px, .28vw, 5px);
+      left: 7.3%;
+      top: 58%;
+      width: clamp(25px, 4vw, 64px);
+      height: clamp(6px, .7vw, 12px);
       border-radius: 50%;
-      opacity: .3;
-      background: rgba(38,18,8,.72);
-      filter: blur(1.2px);
-      transform: translate(-50%, -50%) scaleX(1.35);
+      opacity: .48;
+      background: radial-gradient(ellipse at 8% 50%, rgba(36,15,6,.78) 0 14%, rgba(36,15,6,.5) 28%, rgba(36,15,6,.18) 62%, transparent 76%);
+      filter: blur(1px);
+      transform: translate(0, -50%) rotate(4deg) scaleX(1);
+      transform-origin: left center;
       animation-name: shadowTravel;
       animation-timing-function: linear;
     }
 
     @keyframes shadowTravel {
-      0%, 6.5% { left: 6%; top: 57%; opacity: .28; transform: translate(-50%, -50%) scaleX(1.35); }
-      7.2% { left: 7%; }
-      15% { left: 27%; }
-      24% { left: 50%; }
-      33% { left: 73%; }
-      39% { left: 88%; opacity: .28; transform: translate(-50%, -50%) scaleX(1.25); }
-      42% { left: 94.4%; top: 57%; opacity: .35; transform: translate(-50%, -50%) scaleX(1); }
-      42.7% { left: 95%; top: 56%; opacity: .22; transform: translate(-50%, -50%) scaleX(.7); }
-      43.35%, 100% { left: 95.2%; top: 55%; opacity: 0; transform: translate(-50%, -50%) scaleX(.35); }
+      0%, 6.5% { left: 7.3%; top: 58%; opacity: .48; transform: translate(0, -50%) rotate(4deg) scaleX(1); }
+      7.2% { left: 8.3%; }
+      15% { left: 28.3%; }
+      24% { left: 51.3%; }
+      33% { left: 74.3%; }
+      39% { left: 91.7%; top: 43%; width: clamp(5px, .52vw, 9px); height: clamp(20px, 2.4vw, 39px); opacity: .46; transform: translate(-50%, 0) rotate(0) scaleY(1); }
+      42% { left: 95.2%; top: 48%; width: clamp(5px, .52vw, 9px); height: clamp(16px, 1.9vw, 31px); opacity: .48; transform: translate(-50%, 0) rotate(0) scaleY(.72); }
+      42.7% { left: 95.2%; top: 54%; opacity: .3; transform: translate(-50%, 0) rotate(0) scaleY(.35); }
+      43.35%, 100% { left: 95.2%; top: 61%; opacity: 0; transform: translate(-50%, 0) rotate(0) scaleY(.08); }
     }
 
     .cup {
       position: absolute;
       z-index: 9;
       left: 95.2%;
-      top: 54%;
-      width: clamp(14px, 2.1vw, 34px);
-      height: clamp(5px, .55vw, 10px);
+      top: 67%;
+      width: clamp(15px, 2.05vw, 33px);
+      height: clamp(15px, 2.05vw, 33px);
       border-radius: 50%;
       opacity: 0;
       background:
-        radial-gradient(ellipse at 50% 38%, #030302 0 42%, #160b07 44% 54%, #713315 57% 65%, rgba(126,57,19,.2) 70%, transparent 73%);
-      box-shadow: inset 0 2px 2px #020201, 0 1px 2px rgba(0,0,0,.35);
-      transform: translate(-50%, -50%) scaleX(1.15);
+        radial-gradient(circle at 50% 50%, #010101 0 43%, #110905 46% 55%, #5b2b12 58% 64%, #e59a56 66% 70%, rgba(255,196,122,.2) 72%, transparent 75%);
+      box-shadow:
+        inset 0 3px 3px #000,
+        -1px -1px 1px rgba(255,210,151,.62),
+        1px 2px 3px rgba(38,15,5,.45);
+      transform: translate(-50%, -50%);
       animation-name: cupReveal;
     }
 
@@ -464,15 +471,15 @@
       position: absolute;
       z-index: 11;
       left: 95.2%;
-      top: 54.3%;
-      width: clamp(10px, 1.5vw, 24px);
-      height: clamp(4px, .42vw, 8px);
+      top: 67%;
+      width: clamp(11px, 1.5vw, 24px);
+      height: clamp(11px, 1.5vw, 24px);
       opacity: 0;
       overflow: hidden;
-      border-radius: 0 0 48% 48%;
-      background: linear-gradient(90deg, #35150a, #050302 35% 68%, #411b0c);
-      clip-path: polygon(4% 0, 96% 0, 82% 100%, 18% 100%);
-      transform: translate(-50%, 2%);
+      border-radius: 50%;
+      background: radial-gradient(circle, #020201 0 47%, #1c0b05 68%, transparent 71%);
+      clip-path: none;
+      transform: translate(-50%, -50%);
       animation-name: cupReveal;
     }
 
@@ -480,14 +487,14 @@
       position: absolute;
       z-index: 13;
       left: 95.2%;
-      top: 54%;
-      width: clamp(14px, 2.1vw, 34px);
-      height: clamp(3px, .3vw, 6px);
-      border-radius: 0 0 50% 50%;
+      top: 67%;
+      width: clamp(15px, 2.05vw, 33px);
+      height: clamp(15px, 2.05vw, 33px);
+      border-radius: 50%;
       opacity: 0;
-      background: linear-gradient(180deg, #a94d1d 0 16%, #713116 42%, #2b1209 100%);
-      box-shadow: 0 1px 1px rgba(0,0,0,.4);
-      transform: translate(-50%, -12%);
+      background: radial-gradient(circle, transparent 0 57%, rgba(43,16,7,.9) 60% 66%, #d47a35 69% 73%, transparent 76%);
+      box-shadow: none;
+      transform: translate(-50%, -50%);
       animation-name: cupReveal;
     }
 
@@ -503,13 +510,14 @@
       15% { left: 27%; transform: translateY(-50%) rotate(470deg); }
       24% { left: 50%; transform: translateY(-50%) rotate(980deg); }
       33% { left: 73%; transform: translateY(-50%) rotate(1490deg); }
-      39% { left: 88%; top: 50%; opacity: 1; transform: translateY(-50%) rotate(1820deg); }
-      42% { left: 94.4%; top: 50%; opacity: 1; clip-path: inset(0); transform: translateY(-50%) rotate(1960deg) scale(1); }
-      42.7% { left: 95%; top: 51%; opacity: 1; clip-path: inset(0); transform: translateY(-50%) rotate(1980deg) scale(.98); }
-      43.35% { left: 95.2%; top: 54%; opacity: 1; clip-path: inset(0); transform: translateY(-50%) rotate(2010deg) scale(.96); }
-      44.1% { left: 95.2%; top: 58%; opacity: 1; clip-path: inset(0 0 56%); transform: translateY(-50%) rotate(2040deg) scale(.93); }
-      44.7% { left: 95.2%; top: 62%; opacity: 1; clip-path: inset(0 0 92%); transform: translateY(-50%) rotate(2060deg) scale(.9); }
-      44.8%, 100% { left: 95.2%; top: 62%; opacity: 1; visibility: hidden; clip-path: inset(0 0 100%); transform: translateY(-50%) rotate(2060deg) scale(.9); }
+      39% { left: 91.7%; top: 33%; opacity: 1; clip-path: circle(50%); transform: translate(-50%, -50%) rotate(1820deg) scale(1); }
+      41% { left: 95.2%; top: 34%; opacity: 1; clip-path: circle(50%); transform: translate(-50%, -50%) rotate(1920deg) scale(1); }
+      42% { left: 95.2%; top: 43%; opacity: 1; clip-path: circle(50%); transform: translate(-50%, -50%) rotate(1960deg) scale(1); }
+      43% { left: 95.2%; top: 56%; opacity: 1; clip-path: circle(50%); transform: translate(-50%, -50%) rotate(1990deg) scale(.98); }
+      43.7% { left: 95.2%; top: 65%; opacity: 1; clip-path: circle(44%); transform: translate(-50%, -50%) rotate(2010deg) scale(.88); }
+      44.25% { left: 95.2%; top: 68%; opacity: 1; clip-path: circle(28%); transform: translate(-50%, -50%) rotate(2030deg) scale(.65); }
+      44.7% { left: 95.2%; top: 68%; opacity: 1; visibility: hidden; clip-path: circle(0); transform: translate(-50%, -50%) rotate(2040deg) scale(.35); }
+      44.8%, 100% { left: 95.2%; top: 68%; opacity: 1; visibility: hidden; clip-path: circle(0); transform: translate(-50%, -50%) rotate(2040deg) scale(.35); }
     }
 
     .controls {
