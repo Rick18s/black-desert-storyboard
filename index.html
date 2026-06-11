@@ -204,7 +204,6 @@
 
     .copy-reveal > * {
       position: relative;
-      top: clamp(-7px, -.6vw, -4px);
       align-self: center;
       opacity: 0;
       transform: translateY(45%);
@@ -215,12 +214,16 @@
     }
 
     .copy-reveal .official-logo {
-      height: 72%;
+      top: -7px;
+      width: 92%;
+      height: 52%;
       max-height: none;
+      justify-self: center;
       animation-name: revealLogo;
     }
 
     .copy-reveal .word {
+      top: clamp(-7px, -.6vw, -4px);
       display: block;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(11px, 1.6vw, 28px);
@@ -986,7 +989,7 @@
         gap: 2%;
         padding: 4px 4%;
       }
-      .copy-reveal .official-logo { height: 64%; max-height: none; }
+      .copy-reveal .official-logo { top: -4px; width: 90%; height: 50%; max-height: none; }
       .copy-reveal .word { font-size: 9px; }
       .photo-logo { right: 1.7%; width: 12.5%; }
       .golf-ball { width: 12px; }
