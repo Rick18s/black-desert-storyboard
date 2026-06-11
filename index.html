@@ -191,9 +191,7 @@
       align-items: center;
       gap: 3.5%;
       padding: 0 5.5%;
-      opacity: 0;
-      clip-path: inset(0 100% 0 0);
-      animation-name: copyReveal;
+      opacity: 1;
     }
 
     .official-logo {
@@ -203,6 +201,17 @@
       object-fit: contain;
       flex: 0 0 auto;
     }
+
+    .copy-reveal > * {
+      opacity: 0;
+      transform: translateY(45%);
+      clip-path: inset(100% 0 0);
+      animation-duration: var(--duration);
+      animation-timing-function: cubic-bezier(.22,.72,.24,1);
+      animation-iteration-count: infinite;
+    }
+
+    .copy-reveal .official-logo { animation-name: revealLogo; }
 
     .copy-reveal .word {
       display: block;
@@ -214,11 +223,32 @@
       white-space: nowrap;
     }
 
-    @keyframes copyReveal {
-      0%, 7% { opacity: 0; clip-path: inset(0 96% 0 0); }
-      10% { opacity: 1; clip-path: inset(0 91% 0 0); }
-      45%, 59% { opacity: 1; clip-path: inset(0); }
-      64%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
+    .copy-reveal .visit { animation-name: revealVisit; }
+    .copy-reveal .own { animation-name: revealOwn; }
+    .copy-reveal .play { animation-name: revealPlay; }
+
+    @keyframes revealLogo {
+      0%, 13% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
+      16%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+    }
+
+    @keyframes revealVisit {
+      0%, 17% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
+      20%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+    }
+
+    @keyframes revealOwn {
+      0%, 26% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
+      29%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+    }
+
+    @keyframes revealPlay {
+      0%, 35% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
+      38%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
     }
 
     .aerial-scene {
@@ -339,8 +369,10 @@
       4.2% { opacity: 1; transform: translateX(-14%) rotate(-5deg); }
       6.45% { opacity: 1; transform: translateX(3%) rotate(0); }
       7.6% { opacity: 1; transform: translateX(15%) rotate(4deg); }
-      9.5% { opacity: .7; transform: translateX(35%) rotate(8deg); }
-      11%, 100% { opacity: 0; transform: translateX(50%) rotate(11deg); }
+      10% { opacity: 1; transform: translateX(46%) rotate(8deg); }
+      13% { opacity: .8; transform: translateX(82%) rotate(11deg); }
+      16% { opacity: 0; transform: translateX(125%) rotate(14deg); }
+      16.1%, 100% { opacity: 0; transform: translateX(125%) rotate(14deg); }
     }
 
     @keyframes impactFlash {
@@ -1059,9 +1091,9 @@
     <div class="orange-field"></div>
     <div class="copy-reveal" aria-label="Black Desert Resort. Visit. Own It. Play It.">
       <img class="official-logo" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort">
-      <span class="word">Visit.</span>
-      <span class="word">Own It.</span>
-      <span class="word">Play It.</span>
+      <span class="word visit">Visit.</span>
+      <span class="word own">Own It.</span>
+      <span class="word play">Play It.</span>
     </div>
     <div class="aerial-scene" aria-label="Aerial view of the Black Desert Resort property and golf course">
       <img class="photo-logo official-logo" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort">
