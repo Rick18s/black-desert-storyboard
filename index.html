@@ -182,90 +182,40 @@
       background: linear-gradient(90deg, var(--orange-dark), var(--orange) 44%, #e47728);
     }
 
-    .persistent-logo {
+    .copy-reveal {
       position: absolute;
       z-index: 8;
-      top: 50%;
-      left: 5%;
-      width: 22%;
-      opacity: 0;
-      transform: translateY(90%);
-      clip-path: inset(100% 0 0);
-      animation-name: persistentLogo;
-    }
-
-    .mini-lockup {
+      inset: 0;
       display: flex;
       align-items: center;
-      gap: 6%;
-      min-width: 0;
-    }
-
-    .mini-lockup > img {
-      width: 21%;
-      max-height: 74%;
-      object-fit: contain;
-      transform: scale(2.15);
-    }
-
-    .mini-wordmark {
-      display: grid;
-      line-height: .84;
-      white-space: nowrap;
-    }
-
-    .mini-wordmark b {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(7px, 1.28vw, 21px);
-      font-weight: 400;
-      letter-spacing: .035em;
-    }
-
-    .mini-wordmark small {
-      margin-top: 7%;
-      font-size: clamp(4px, .58vw, 10px);
-      letter-spacing: .44em;
-      text-align: center;
-    }
-
-    @keyframes persistentLogo {
-      0%, 3% { opacity: 0; transform: translateY(90%); clip-path: inset(100% 0 0); }
-      9%, 61% { opacity: 1; transform: translateY(-50%); clip-path: inset(0); }
-      66%, 100% { opacity: 0; transform: translateY(-145%); clip-path: inset(0 0 100%); }
-    }
-
-    .word {
-      position: absolute;
-      z-index: 8;
-      top: 50%;
+      gap: 4.7%;
+      padding: 0 6.5%;
       opacity: 0;
+      clip-path: inset(0 100% 0 0);
+      animation-name: copyReveal;
+    }
+
+    .official-logo {
+      display: block;
+      width: 19%;
+      max-height: 76%;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .copy-reveal .word {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(15px, 2.25vw, 41px);
+      font-size: clamp(14px, 2vw, 36px);
       font-weight: 400;
       letter-spacing: -.045em;
       white-space: nowrap;
     }
 
-    .word.visit { left: 33%; animation-name: visitWord; }
-    .word.own { left: 49%; animation-name: ownWord; }
-    .word.play { left: 68%; animation-name: playWord; }
-
-    @keyframes visitWord {
-      0%, 13% { opacity: 0; transform: translateY(-145%); clip-path: inset(0 0 100%); }
-      20%, 61% { opacity: 1; transform: translateY(-50%); clip-path: inset(0); }
-      66%, 100% { opacity: 0; transform: translateY(90%); clip-path: inset(100% 0 0); }
-    }
-
-    @keyframes ownWord {
-      0%, 27% { opacity: 0; transform: translateY(90%); clip-path: inset(100% 0 0); }
-      34%, 61% { opacity: 1; transform: translateY(-50%); clip-path: inset(0); }
-      66%, 100% { opacity: 0; transform: translateY(-145%); clip-path: inset(0 0 100%); }
-    }
-
-    @keyframes playWord {
-      0%, 41% { opacity: 0; transform: translateY(-145%); clip-path: inset(0 0 100%); }
-      48%, 61% { opacity: 1; transform: translateY(-50%); clip-path: inset(0); }
-      66%, 100% { opacity: 0; transform: translateY(90%); clip-path: inset(100% 0 0); }
+    @keyframes copyReveal {
+      0%, 7% { opacity: 0; clip-path: inset(0 96% 0 0); }
+      10% { opacity: 1; clip-path: inset(0 91% 0 0); }
+      45%, 59% { opacity: 1; clip-path: inset(0); }
+      64%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
     .aerial-scene {
@@ -281,8 +231,8 @@
     .aerial-scene::before {
       content: "";
       position: absolute;
-      inset: 0 8%;
-      background: url("assets/aerial-resort-center.jpg") center 54% / cover no-repeat;
+      inset: 0 16% 0 0;
+      background: url("assets/aerial-resort-center.jpg") center 59% / cover no-repeat;
       animation: aerialPan var(--duration) ease-in-out infinite;
     }
 
@@ -291,24 +241,27 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg,
-          var(--orange-dark) 0%,
-          rgba(190,76,23,.92) 8%,
-          rgba(207,91,28,0) 23%,
-          rgba(207,91,28,0) 77%,
-          rgba(225,107,35,.92) 92%,
-          #e47728 100%);
+        linear-gradient(90deg, rgba(169,71,20,.72), transparent 13% 69%, rgba(217,97,23,.3) 84%, var(--orange) 84%);
+    }
+
+    .photo-logo {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: 2.3%;
+      width: 11.5%;
+      transform: translateY(-50%);
     }
 
     @keyframes aerialReveal {
-      0%, 61% { opacity: 0; clip-path: inset(0 100% 0 0); }
-      67%, 81% { opacity: 1; clip-path: inset(0); }
+      0%, 58% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      64%, 82% { opacity: 1; clip-path: inset(0); }
       87%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes aerialPan {
-      0%, 61% { transform: translateX(3%) scale(1.04); }
-      87%, 100% { transform: translateX(-3%) scale(1.04); }
+      0%, 58% { transform: translateX(2%) scale(1.04); }
+      87%, 100% { transform: translateX(-2%) scale(1.04); }
     }
 
     .end-card {
@@ -324,7 +277,7 @@
       animation-name: endCard;
     }
 
-    .end-card .mini-lockup { width: 31%; }
+    .end-card .official-logo { width: 29%; }
 
     .end-card span {
       padding-left: 5%;
@@ -340,46 +293,102 @@
       100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
+    .putter {
+      position: absolute;
+      z-index: 14;
+      left: -9%;
+      top: 7%;
+      width: 9%;
+      height: 78%;
+      opacity: 0;
+      transform: rotate(-13deg);
+      transform-origin: 78% 78%;
+      animation-name: putterStrike;
+    }
+
+    .putter::before {
+      content: "";
+      position: absolute;
+      left: 68%;
+      top: -25%;
+      width: 5%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4f5355, #e4e7e7 48%, #535759);
+      box-shadow: 1px 0 2px rgba(0,0,0,.4);
+    }
+
+    .putter::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 2%;
+      width: 48%;
+      height: 26%;
+      border-radius: 40% 14% 18% 45%;
+      background: linear-gradient(145deg, #dadcdb 0 23%, #777d7e 43%, #242728 100%);
+      box-shadow: 0 4px 8px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.6);
+    }
+
+    @keyframes putterStrike {
+      0%, 1% { left: -9%; opacity: 0; transform: rotate(-13deg); }
+      3% { left: -.8%; opacity: 1; transform: rotate(-5deg); }
+      6.5% { left: 1.2%; opacity: 1; transform: rotate(3deg); }
+      8.2% { left: .4%; opacity: 1; transform: rotate(-8deg); }
+      11%, 100% { left: -10%; opacity: 0; transform: rotate(-15deg); }
+    }
+
     .golf-ball {
       position: absolute;
       z-index: 12;
-      left: -4%;
-      top: 48%;
+      left: 6%;
+      top: 50%;
       width: clamp(11px, 1.75vw, 28px);
       aspect-ratio: 1;
       border-radius: 50%;
-      opacity: .72;
+      opacity: 1;
       background:
-        radial-gradient(circle at 28% 25%, rgba(145,145,145,.45) 0 3.5%, transparent 4.5%) 0 0 / 25% 25%,
-        radial-gradient(circle at 68% 62%, rgba(130,130,130,.35) 0 3.5%, transparent 4.5%) 0 0 / 28% 28%,
-        radial-gradient(circle at 35% 28%, #fff 0 18%, #e9e7df 55%, #9c9b96 100%);
-      box-shadow: 0 3px 10px rgba(0,0,0,.4);
+        radial-gradient(circle at 30% 27%, rgba(120,120,120,.42) 0 4%, transparent 5%) 0 0 / 23% 23%,
+        radial-gradient(circle at 70% 66%, rgba(120,120,120,.32) 0 4%, transparent 5%) 0 0 / 27% 27%,
+        radial-gradient(circle at 34% 27%, #fff 0 17%, #e9e7df 58%, #8d8c87 100%);
+      box-shadow: 0 3px 8px rgba(0,0,0,.5);
       animation-name: ballTravel;
-      animation-timing-function: linear;
+      animation-timing-function: cubic-bezier(.18,.66,.25,1);
+    }
+
+    .golf-ball::before {
+      content: "BDR";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: var(--orange-dark);
+      font-family: Arial, sans-serif;
+      font-size: 25%;
+      font-weight: 800;
+      letter-spacing: -.08em;
+      transform: translate(-50%, -45%);
     }
 
     .golf-ball::after {
       content: "";
       position: absolute;
       left: 50%;
-      top: 50%;
-      width: 230%;
-      height: 125%;
+      top: 90%;
+      width: 175%;
+      height: 32%;
       border-radius: 50%;
-      border-bottom: 1px solid rgba(255,255,255,.24);
-      transform: translate(-50%, -52%);
+      background: rgba(41,25,14,.28);
+      filter: blur(2px);
+      transform: translateX(-50%);
     }
 
     @keyframes ballTravel {
-      0% { left: -5%; top: 50%; opacity: .7; transform: rotate(0); }
-      11% { left: 18%; top: 18%; transform: rotate(300deg); }
-      20% { left: 31%; top: 58%; transform: rotate(560deg); }
-      29% { left: 48%; top: 20%; transform: rotate(830deg); }
-      38% { left: 64%; top: 59%; transform: rotate(1100deg); }
-      47% { left: 78%; top: 22%; transform: rotate(1370deg); }
-      56% { left: 90%; top: 58%; transform: rotate(1600deg); }
-      63% { left: 104%; top: 50%; opacity: .7; transform: rotate(1900deg); }
-      66%, 100% { left: 104%; top: 50%; opacity: 0; transform: rotate(1900deg); }
+      0%, 6.5% { left: 6%; opacity: 1; transform: translateY(-50%) rotate(0); }
+      10% { left: 18%; transform: translateY(-50%) rotate(260deg); }
+      21% { left: 45%; transform: translateY(-50%) rotate(850deg); }
+      34% { left: 72%; transform: translateY(-50%) rotate(1460deg); }
+      44% { left: 95%; opacity: 1; transform: translateY(-50%) rotate(1980deg); }
+      47%, 100% { left: 102%; opacity: 0; transform: translateY(-50%) rotate(2100deg); }
     }
 
     .controls {
@@ -575,10 +584,9 @@
     }
 
     .format-preview-content img {
-      width: 19%;
+      width: 27%;
       max-height: 68%;
       object-fit: contain;
-      transform: scale(1.8);
     }
 
     .format-preview-content b {
@@ -669,10 +677,9 @@
     }
 
     .fascia-band-content img {
-      width: 8%;
+      width: 15%;
       max-height: 68%;
       object-fit: contain;
-      transform: scale(1.8);
     }
 
     .fascia-band-content strong {
@@ -835,13 +842,13 @@
         height: 44px;
         border-block-width: 3px;
       }
-      .persistent-logo { left: 4%; width: 25%; }
-      .mini-wordmark b { font-size: 7px; }
-      .mini-wordmark small { font-size: 4px; }
-      .word { font-size: 12px; }
-      .word.visit { left: 34%; }
-      .word.own { left: 51%; }
-      .word.play { left: 71%; }
+      .copy-reveal {
+        gap: 4%;
+        padding-inline: 5.5%;
+      }
+      .copy-reveal .official-logo { width: 21%; }
+      .copy-reveal .word { font-size: 10px; }
+      .photo-logo { right: 1.7%; width: 12.5%; }
       .golf-ball { width: 12px; }
       .controls { gap: 8px; }
       .control {
@@ -925,8 +932,8 @@
           <h1>A destination<br>in motion.</h1>
         </div>
         <p class="lead">
-          A clear campaign sequence that builds the Black Desert Resort message across the
-          ribbon, reveals the full property and closes with a direct digital call to action.
+          A branded golf ball and putter strike initiate one continuous reveal across the
+          ribbon, leading into the resort aerial and a direct digital close.
         </p>
       </div>
 
@@ -949,9 +956,9 @@
           <h2>One message, built across the ribbon.</h2>
         </div>
         <p>
-          The Black Desert Resort logo establishes the brand first. Visit, Own It and Play It
-          then arrive one by one, creating a complete left-to-right message before the aerial
-          destination reveal and final website card.
+          A putter strikes the branded ball at one end of the ribbon. As the ball rolls quickly
+          across the display, it reveals the official Black Desert Resort logo and campaign copy
+          in one clean left-to-right movement.
         </p>
       </div>
 
@@ -980,21 +987,21 @@
         <article class="format-card">
           <small>Upper Fascia</small>
           <div class="format-preview short">
-            <div class="format-preview-content"><img src="assets/bdr-official-symbol-white.png" alt=""><b>Visit. Own It. Play It.</b></div>
+            <div class="format-preview-content"><img src="assets/bdr-horizontal-white-official.png" alt=""><b>Visit. Own It. Play It.</b></div>
           </div>
           <div><strong>8500 × 112 px</strong><span>Northeast and Northwest displays</span></div>
         </article>
         <article class="format-card">
           <small>Upper Fascia</small>
           <div class="format-preview long">
-            <div class="format-preview-content"><img src="assets/bdr-official-symbol-white.png" alt=""><b>Visit.</b><b>Own It.</b><b>Play It.</b></div>
+            <div class="format-preview-content"><img src="assets/bdr-horizontal-white-official.png" alt=""><b>Visit.</b><b>Own It.</b><b>Play It.</b></div>
           </div>
           <div><strong>24496 × 112 px</strong><span>South display</span></div>
         </article>
         <article class="format-card">
           <small>Lower Fascia</small>
           <div class="format-preview medium">
-            <div class="format-preview-content"><img src="assets/bdr-official-symbol-white.png" alt=""><b>Visit. Own It. Play It.</b></div>
+            <div class="format-preview-content"><img src="assets/bdr-horizontal-white-official.png" alt=""><b>Visit. Own It. Play It.</b></div>
           </div>
           <div><strong>11648 × 112 px</strong><span>East and West displays</span></div>
         </article>
@@ -1005,9 +1012,9 @@
           <p>A conceptual view of how the campaign can scale across the upper and lower fascia locations while maintaining one coordinated visual system.</p>
         </div>
         <div class="fascia-bowl" aria-label="Conceptual Allegiant Stadium fascia application">
-          <div class="fascia-band upper-north"><div class="fascia-band-content"><img src="assets/bdr-official-symbol-white.png" alt=""><strong>Visit. Own It. Play It.</strong></div></div>
-          <div class="fascia-band upper-south"><div class="fascia-band-content"><img src="assets/bdr-official-symbol-white.png" alt=""><strong>Visit.</strong><strong>Own It.</strong><strong>Play It.</strong></div></div>
-          <div class="fascia-band lower"><div class="fascia-band-content"><img src="assets/bdr-official-symbol-white.png" alt=""><strong>blackdesertresort.com</strong></div></div>
+          <div class="fascia-band upper-north"><div class="fascia-band-content"><img src="assets/bdr-horizontal-white-official.png" alt=""><strong>Visit. Own It. Play It.</strong></div></div>
+          <div class="fascia-band upper-south"><div class="fascia-band-content"><img src="assets/bdr-horizontal-white-official.png" alt=""><strong>Visit.</strong><strong>Own It.</strong><strong>Play It.</strong></div></div>
+          <div class="fascia-band lower"><div class="fascia-band-content"><img src="assets/bdr-horizontal-white-official.png" alt=""><strong>blackdesertresort.com</strong></div></div>
           <span class="fascia-label one">Upper NE / NW</span>
           <span class="fascia-label two">Upper South</span>
           <span class="fascia-label three">Lower East / West</span>
@@ -1019,10 +1026,10 @@
       <p class="eyebrow">Motion storyboard</p>
       <h2>A clear ten-second journey.</h2>
       <div class="beats">
-        <article class="beat"><b>0.0–1.3 sec</b><div><strong>Brand arrival</strong><p>The Black Desert Resort logo reveals on the left and establishes the visual anchor.</p></div></article>
-        <article class="beat"><b>1.3–6.3 sec</b><div><strong>Visit. Own It. Play It.</strong><p>Each invitation animates into place and remains visible as the complete campaign line builds.</p></div></article>
-        <article class="beat"><b>6.3–8.7 sec</b><div><strong>Destination reveal</strong><p>A directional wipe opens onto an aerial view of the resort and surrounding golf landscape.</p></div></article>
-        <article class="beat"><b>8.7–10 sec</b><div><strong>Digital close</strong><p>The orange brand field returns with the Black Desert Resort logo and website.</p></div></article>
+        <article class="beat"><b>0.0–0.7 sec</b><div><strong>Ready to roll</strong><p>A branded golf ball rests at the edge as the putter enters, creating a clear moment of anticipation.</p></div></article>
+        <article class="beat"><b>0.7–5.9 sec</b><div><strong>Strike and reveal</strong><p>The putter makes contact and the ball rolls across, revealing the official BDR logo and Visit. Own It. Play It.</p></div></article>
+        <article class="beat"><b>5.9–8.7 sec</b><div><strong>Destination reveal</strong><p>A directional wipe opens onto the aerial property image while the official logo remains anchored at the right end.</p></div></article>
+        <article class="beat"><b>8.7–10 sec</b><div><strong>Digital close</strong><p>The orange brand field returns with the official Black Desert Resort logo and website.</p></div></article>
       </div>
     </section>
 
@@ -1033,19 +1040,22 @@
 
   <footer>
     <span>Black Desert Resort — Inner Bowl LED Ribbon Board</span>
-    <span>Final Approved Presentation / 10 second sequence</span>
+    <span>Revised Client Presentation / 10 second sequence</span>
   </footer>
 
   <template id="motionTemplate">
     <div class="orange-field"></div>
-    <div class="persistent-logo" aria-label="Black Desert Resort">
-      <div class="mini-lockup"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div>
+    <div class="copy-reveal" aria-label="Black Desert Resort. Visit. Own It. Play It.">
+      <img class="official-logo" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort">
+      <span class="word">Visit.</span>
+      <span class="word">Own It.</span>
+      <span class="word">Play It.</span>
     </div>
-    <div class="word visit">Visit.</div>
-    <div class="word own">Own It.</div>
-    <div class="word play">Play It.</div>
-    <div class="aerial-scene" aria-label="Aerial view of the Black Desert Resort property and golf course"></div>
-    <div class="end-card"><div class="mini-lockup" aria-label="Black Desert Resort"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div><span>blackdesertresort.com</span></div>
+    <div class="aerial-scene" aria-label="Aerial view of the Black Desert Resort property and golf course">
+      <img class="photo-logo official-logo" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort">
+    </div>
+    <div class="end-card"><img class="official-logo" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"><span>blackdesertresort.com</span></div>
+    <div class="putter" aria-label="Animated putter striking the golf ball"></div>
     <div class="golf-ball" aria-label="Animated golf ball"></div>
   </template>
 
