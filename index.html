@@ -190,14 +190,14 @@
       grid-template-columns: 24% repeat(3, 1fr);
       align-items: center;
       gap: 3.5%;
-      padding: 0 5.5%;
+      padding: clamp(4px, .55vw, 9px) 5.5%;
       opacity: 1;
     }
 
     .official-logo {
       display: block;
       width: 100%;
-      max-height: 76%;
+      max-height: 58%;
       object-fit: contain;
       flex: 0 0 auto;
     }
@@ -216,9 +216,10 @@
     .copy-reveal .word {
       display: block;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(14px, 2vw, 36px);
+      font-size: clamp(11px, 1.6vw, 28px);
       font-weight: 400;
       letter-spacing: -.045em;
+      line-height: 1;
       text-align: center;
       white-space: nowrap;
     }
@@ -310,12 +311,12 @@
       animation-name: endCard;
     }
 
-    .end-card .official-logo { width: 29%; }
+    .end-card .official-logo { width: 27%; max-height: 56%; }
 
     .end-card span {
       padding-left: 5%;
       border-left: 1px solid rgba(255,255,255,.55);
-      font-size: clamp(8px, 1.4vw, 22px);
+      font-size: clamp(7px, 1.15vw, 18px);
       letter-spacing: .055em;
       white-space: nowrap;
     }
@@ -713,15 +714,16 @@
     }
 
     .format-preview-content img {
-      width: 27%;
-      max-height: 68%;
+      width: 24%;
+      max-height: 54%;
       object-fit: contain;
     }
 
     .format-preview-content b {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(8px, 1.2vw, 17px);
+      font-size: clamp(7px, .95vw, 14px);
       font-weight: 400;
+      line-height: 1;
     }
 
     .stadium-application {
@@ -806,15 +808,16 @@
     }
 
     .fascia-band-content img {
-      width: 15%;
-      max-height: 68%;
+      width: 13%;
+      max-height: 52%;
       object-fit: contain;
     }
 
     .fascia-band-content strong {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(11px, 2vw, 32px);
+      font-size: clamp(8px, 1.35vw, 22px);
       font-weight: 400;
+      line-height: 1;
     }
 
     .fascia-label {
@@ -974,9 +977,10 @@
       .copy-reveal {
         grid-template-columns: 25% repeat(3, 1fr);
         gap: 2%;
-        padding-inline: 4%;
+        padding: 4px 4%;
       }
-      .copy-reveal .word { font-size: 10px; }
+      .copy-reveal .official-logo { max-height: 54%; }
+      .copy-reveal .word { font-size: 9px; }
       .photo-logo { right: 1.7%; width: 12.5%; }
       .golf-ball { width: 12px; }
       .controls { gap: 8px; }
@@ -1019,8 +1023,8 @@
       .fascia-band.upper-north { left: 10%; right: 10%; }
       .fascia-band.lower { left: 6%; right: 6%; }
       .fascia-band-content { gap: 3%; }
-      .fascia-band-content img { width: 10%; }
-      .fascia-band-content strong { font-size: 12px; }
+      .fascia-band-content img { width: 12%; max-height: 50%; }
+      .fascia-band-content strong { font-size: 9px; }
       .fascia-label {
         right: 3%;
         padding: 4px 6px;
