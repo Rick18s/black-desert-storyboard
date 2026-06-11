@@ -188,7 +188,7 @@
       inset: 0;
       display: grid;
       grid-template-columns: 24% repeat(3, 1fr);
-      align-items: center;
+      align-items: stretch;
       gap: 3.5%;
       padding: clamp(4px, .55vw, 9px) 5.5%;
       opacity: 1;
@@ -203,6 +203,9 @@
     }
 
     .copy-reveal > * {
+      position: relative;
+      top: clamp(-7px, -.6vw, -4px);
+      align-self: center;
       opacity: 0;
       transform: translateY(45%);
       clip-path: inset(100% 0 0);
@@ -211,7 +214,11 @@
       animation-iteration-count: infinite;
     }
 
-    .copy-reveal .official-logo { animation-name: revealLogo; }
+    .copy-reveal .official-logo {
+      height: 72%;
+      max-height: none;
+      animation-name: revealLogo;
+    }
 
     .copy-reveal .word {
       display: block;
@@ -219,7 +226,7 @@
       font-size: clamp(11px, 1.6vw, 28px);
       font-weight: 400;
       letter-spacing: -.045em;
-      line-height: 1;
+      line-height: .9;
       text-align: center;
       white-space: nowrap;
     }
@@ -979,7 +986,7 @@
         gap: 2%;
         padding: 4px 4%;
       }
-      .copy-reveal .official-logo { max-height: 54%; }
+      .copy-reveal .official-logo { height: 64%; max-height: none; }
       .copy-reveal .word { font-size: 9px; }
       .photo-logo { right: 1.7%; width: 12.5%; }
       .golf-ball { width: 12px; }
