@@ -425,14 +425,39 @@
       transform: translateX(-50%);
     }
 
+    .cup {
+      position: absolute;
+      z-index: 9;
+      left: 95.2%;
+      top: 54%;
+      width: clamp(14px, 2.1vw, 34px);
+      height: clamp(4px, .45vw, 8px);
+      border-radius: 50%;
+      opacity: 0;
+      background:
+        radial-gradient(ellipse at center, #050504 0 48%, #4f2915 52%, rgba(109,49,17,.3) 72%, transparent 75%);
+      box-shadow: 0 2px 4px rgba(0,0,0,.42);
+      transform: translate(-50%, -50%) scaleX(1.15);
+      animation-name: cupReveal;
+    }
+
+    @keyframes cupReveal {
+      0%, 30% { opacity: 0; }
+      33%, 48% { opacity: .9; }
+      52%, 100% { opacity: 0; }
+    }
+
     @keyframes ballTravel {
       0%, 6.5% { left: 6%; opacity: 1; transform: translateY(-50%) rotate(0); }
       7.2% { left: 7%; transform: translateY(-50%) rotate(20deg); }
       15% { left: 27%; transform: translateY(-50%) rotate(470deg); }
       24% { left: 50%; transform: translateY(-50%) rotate(980deg); }
       33% { left: 73%; transform: translateY(-50%) rotate(1490deg); }
-      42% { left: 94%; opacity: 1; transform: translateY(-50%) rotate(1960deg); }
-      45%, 100% { left: 102%; opacity: 0; transform: translateY(-50%) rotate(2140deg); }
+      39% { left: 88%; top: 50%; opacity: 1; transform: translateY(-50%) rotate(1820deg); }
+      42% { left: 94.7%; top: 50%; opacity: 1; transform: translateY(-50%) rotate(1960deg) scale(1); }
+      43.2% { left: 95.2%; top: 54%; opacity: .82; transform: translateY(-50%) rotate(1990deg) scale(.72); }
+      44.5% { left: 95.2%; top: 58%; opacity: 0; transform: translateY(-50%) rotate(2010deg) scale(.25); }
+      44.6%, 100% { left: 95.2%; top: 58%; opacity: 0; transform: translateY(-50%) rotate(2010deg) scale(.25); }
     }
 
     .controls {
@@ -1130,6 +1155,7 @@
       </svg>
     </div>
     <div class="impact-line"></div>
+    <div class="cup" aria-label="Golf hole"></div>
     <div class="golf-ball" aria-label="Animated golf ball"></div>
   </template>
 
