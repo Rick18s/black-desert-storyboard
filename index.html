@@ -186,10 +186,11 @@
       position: absolute;
       z-index: 8;
       inset: 0;
-      display: flex;
+      display: grid;
+      grid-template-columns: 24% repeat(3, 1fr);
       align-items: center;
-      gap: 4.7%;
-      padding: 0 6.5%;
+      gap: 3.5%;
+      padding: 0 5.5%;
       opacity: 0;
       clip-path: inset(0 100% 0 0);
       animation-name: copyReveal;
@@ -197,17 +198,19 @@
 
     .official-logo {
       display: block;
-      width: 19%;
+      width: 100%;
       max-height: 76%;
       object-fit: contain;
       flex: 0 0 auto;
     }
 
     .copy-reveal .word {
+      display: block;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(14px, 2vw, 36px);
       font-weight: 400;
       letter-spacing: -.045em;
+      text-align: center;
       white-space: nowrap;
     }
 
@@ -296,46 +299,51 @@
     .putter {
       position: absolute;
       z-index: 14;
-      left: -9%;
-      top: 7%;
-      width: 9%;
-      height: 78%;
+      left: -7%;
+      top: -5%;
+      width: 12%;
+      height: 105%;
       opacity: 0;
-      transform: rotate(-13deg);
-      transform-origin: 78% 78%;
+      transform: rotate(-10deg);
+      transform-origin: 76% 82%;
       animation-name: putterStrike;
+      animation-timing-function: cubic-bezier(.35,0,.2,1);
     }
 
     .putter::before {
       content: "";
       position: absolute;
-      left: 68%;
-      top: -25%;
-      width: 5%;
-      height: 100%;
+      left: 70%;
+      top: -18%;
+      width: 4%;
+      height: 104%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #4f5355, #e4e7e7 48%, #535759);
-      box-shadow: 1px 0 2px rgba(0,0,0,.4);
+      background: linear-gradient(90deg, #323637, #f1f3f2 48%, #555a5b);
+      box-shadow: 1px 1px 2px rgba(0,0,0,.55);
     }
 
     .putter::after {
       content: "";
       position: absolute;
-      right: 0;
-      bottom: 2%;
-      width: 48%;
-      height: 26%;
-      border-radius: 40% 14% 18% 45%;
-      background: linear-gradient(145deg, #dadcdb 0 23%, #777d7e 43%, #242728 100%);
-      box-shadow: 0 4px 8px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.6);
+      right: 1%;
+      bottom: 1%;
+      width: 62%;
+      height: 19%;
+      border-radius: 48% 12% 20% 36%;
+      background:
+        linear-gradient(170deg, rgba(255,255,255,.88) 0 9%, transparent 10%),
+        linear-gradient(150deg, #dadddc 0 22%, #8a9091 38%, #393d3e 72%, #191b1c 100%);
+      box-shadow: 0 4px 7px rgba(0,0,0,.5), inset -3px -2px 4px rgba(0,0,0,.35);
     }
 
     @keyframes putterStrike {
-      0%, 1% { left: -9%; opacity: 0; transform: rotate(-13deg); }
-      3% { left: -.8%; opacity: 1; transform: rotate(-5deg); }
-      6.5% { left: 1.2%; opacity: 1; transform: rotate(3deg); }
-      8.2% { left: .4%; opacity: 1; transform: rotate(-8deg); }
-      11%, 100% { left: -10%; opacity: 0; transform: rotate(-15deg); }
+      0% { left: -8%; opacity: 0; transform: rotate(-16deg); }
+      1.5% { left: -2%; opacity: 1; transform: rotate(-12deg); }
+      4.8% { left: .1%; opacity: 1; transform: rotate(-4deg); }
+      6.5% { left: 1.1%; opacity: 1; transform: rotate(1deg); }
+      7.4% { left: .2%; opacity: 1; transform: rotate(-5deg); }
+      9.5% { left: -2%; opacity: .8; transform: rotate(-12deg); }
+      11%, 100% { left: -9%; opacity: 0; transform: rotate(-16deg); }
     }
 
     .golf-ball {
@@ -353,7 +361,7 @@
         radial-gradient(circle at 34% 27%, #fff 0 17%, #e9e7df 58%, #8d8c87 100%);
       box-shadow: 0 3px 8px rgba(0,0,0,.5);
       animation-name: ballTravel;
-      animation-timing-function: cubic-bezier(.18,.66,.25,1);
+      animation-timing-function: linear;
     }
 
     .golf-ball::before {
@@ -384,11 +392,12 @@
 
     @keyframes ballTravel {
       0%, 6.5% { left: 6%; opacity: 1; transform: translateY(-50%) rotate(0); }
-      10% { left: 18%; transform: translateY(-50%) rotate(260deg); }
-      21% { left: 45%; transform: translateY(-50%) rotate(850deg); }
-      34% { left: 72%; transform: translateY(-50%) rotate(1460deg); }
-      44% { left: 95%; opacity: 1; transform: translateY(-50%) rotate(1980deg); }
-      47%, 100% { left: 102%; opacity: 0; transform: translateY(-50%) rotate(2100deg); }
+      7.2% { left: 7%; transform: translateY(-50%) rotate(20deg); }
+      15% { left: 27%; transform: translateY(-50%) rotate(470deg); }
+      24% { left: 50%; transform: translateY(-50%) rotate(980deg); }
+      33% { left: 73%; transform: translateY(-50%) rotate(1490deg); }
+      42% { left: 94%; opacity: 1; transform: translateY(-50%) rotate(1960deg); }
+      45%, 100% { left: 102%; opacity: 0; transform: translateY(-50%) rotate(2140deg); }
     }
 
     .controls {
@@ -843,10 +852,10 @@
         border-block-width: 3px;
       }
       .copy-reveal {
-        gap: 4%;
-        padding-inline: 5.5%;
+        grid-template-columns: 25% repeat(3, 1fr);
+        gap: 2%;
+        padding-inline: 4%;
       }
-      .copy-reveal .official-logo { width: 21%; }
       .copy-reveal .word { font-size: 10px; }
       .photo-logo { right: 1.7%; width: 12.5%; }
       .golf-ball { width: 12px; }
