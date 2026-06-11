@@ -541,7 +541,7 @@
     }
 
     .format-card {
-      min-height: 230px;
+      min-height: 285px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -576,6 +576,158 @@
     }
 
     .format-card:first-child span { color: rgba(255,255,255,.72); }
+
+    .format-preview {
+      position: relative;
+      height: 54px;
+      margin: 24px 0;
+      overflow: hidden;
+      border-block: 3px solid #171613;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange) 48%, #e47728);
+      box-shadow: 0 8px 18px rgba(42,32,22,.13);
+    }
+
+    .format-preview.short { width: 62%; }
+    .format-preview.long { width: 100%; }
+    .format-preview.medium { width: 78%; }
+
+    .format-preview-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 5%;
+      padding: 0 5%;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .format-preview-content img {
+      width: 19%;
+      max-height: 68%;
+      object-fit: contain;
+      transform: scale(1.8);
+    }
+
+    .format-preview-content b {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(8px, 1.2vw, 17px);
+      font-weight: 400;
+    }
+
+    .stadium-application {
+      margin-top: 58px;
+      padding: 34px;
+      color: white;
+      background: #11100e;
+    }
+
+    .stadium-application-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+
+    .stadium-application-head h3 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 62px);
+      letter-spacing: -.05em;
+      line-height: .95;
+    }
+
+    .stadium-application-head p {
+      max-width: 470px;
+      margin: 0;
+      color: rgba(255,255,255,.58);
+      line-height: 1.5;
+    }
+
+    .fascia-bowl {
+      position: relative;
+      height: min(50vw, 550px);
+      min-height: 380px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50% 50% 10px 10px / 35% 35% 10px 10px;
+      background:
+        radial-gradient(ellipse at 50% 112%, #274a2e 0 18%, transparent 18.5%),
+        radial-gradient(ellipse at 50% 108%, transparent 0 31%, #292a27 31.5% 39%, transparent 39.5%),
+        radial-gradient(ellipse at 50% 104%, transparent 0 45%, #3a3b37 45.5% 53%, transparent 53.5%),
+        linear-gradient(#060606 0 24%, #171715 24% 100%);
+    }
+
+    .fascia-bowl::before {
+      content: "";
+      position: absolute;
+      inset: 17% 2% 10%;
+      opacity: .42;
+      background:
+        radial-gradient(circle, #d9c9a6 0 1px, transparent 1.7px) 0 0 / 13px 11px,
+        radial-gradient(circle, #8b6045 0 1px, transparent 1.8px) 6px 4px / 17px 14px;
+      mask-image: linear-gradient(transparent, black 15% 82%, transparent);
+    }
+
+    .fascia-band {
+      position: absolute;
+      z-index: 3;
+      left: 3%;
+      right: 3%;
+      height: 9%;
+      overflow: hidden;
+      border-block: 3px solid #050505;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange) 48%, #e47728);
+      box-shadow: 0 0 22px rgba(217,97,23,.25);
+    }
+
+    .fascia-band.upper-north { top: 29%; left: 18%; right: 18%; }
+    .fascia-band.upper-south { top: 43%; }
+    .fascia-band.lower { top: 59%; left: 11%; right: 11%; }
+
+    .fascia-band-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5%;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .fascia-band-content img {
+      width: 8%;
+      max-height: 68%;
+      object-fit: contain;
+      transform: scale(1.8);
+    }
+
+    .fascia-band-content strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(11px, 2vw, 32px);
+      font-weight: 400;
+    }
+
+    .fascia-label {
+      position: absolute;
+      z-index: 4;
+      right: 4%;
+      padding: 6px 9px;
+      color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(17,16,14,.74);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .fascia-label.one { top: 25%; }
+    .fascia-label.two { top: 39%; }
+    .fascia-label.three { top: 55%; }
 
     .timeline {
       padding: 9vw 6vw;
@@ -672,6 +824,7 @@
       .hero { min-height: auto; padding-top: 124px; }
       .bowl { height: 355px; border-radius: 38% 38% 8px 8px / 24% 24% 8px 8px; }
       .beats, .specs, .format-grid { grid-template-columns: 1fr 1fr; }
+      .stadium-application-head { align-items: start; flex-direction: column; }
       .word { font-size: clamp(12px, 2.5vw, 28px); }
       .version-tabs {
         overflow-x: auto;
@@ -766,7 +919,29 @@
       .beats, .specs, .format-grid { grid-template-columns: 1fr; }
       .timeline h2 { margin-bottom: 32px; }
       .beat { min-height: 210px; }
-      .format-card { min-height: 200px; }
+      .format-card { min-height: 255px; }
+      .format-preview.short,
+      .format-preview.medium { width: 100%; }
+      .stadium-application {
+        margin-top: 36px;
+        padding: 18px;
+      }
+      .fascia-bowl {
+        height: 330px;
+        min-height: 330px;
+        border-radius: 34% 34% 8px 8px / 20% 20% 8px 8px;
+      }
+      .fascia-band { height: 11%; }
+      .fascia-band.upper-north { left: 10%; right: 10%; }
+      .fascia-band.lower { left: 6%; right: 6%; }
+      .fascia-band-content { gap: 3%; }
+      .fascia-band-content img { width: 10%; }
+      .fascia-band-content strong { font-size: 12px; }
+      .fascia-label {
+        right: 3%;
+        padding: 4px 6px;
+        font-size: 6px;
+      }
       .spec { border-right: 0; border-bottom: 1px solid #c9c1b5; }
       .closing-statement {
         min-height: 330px;
@@ -864,16 +1039,39 @@
       <div class="format-grid">
         <article class="format-card">
           <small>Upper Fascia</small>
+          <div class="format-preview short">
+            <div class="format-preview-content"><img src="assets/bdr-official-symbol-white.png" alt=""><b>Visit. Own It. Play It.</b></div>
+          </div>
           <div><strong>8500 × 112 px</strong><span>Northeast and Northwest displays</span></div>
         </article>
         <article class="format-card">
           <small>Upper Fascia</small>
+          <div class="format-preview long">
+            <div class="format-preview-content"><img src="assets/bdr-official-symbol-white.png" alt=""><b>Visit.</b><b>Own It.</b><b>Play It.</b></div>
+          </div>
           <div><strong>24496 × 112 px</strong><span>South display</span></div>
         </article>
         <article class="format-card">
           <small>Lower Fascia</small>
+          <div class="format-preview medium">
+            <div class="format-preview-content"><img src="assets/bdr-official-symbol-white.png" alt=""><b>Visit. Own It. Play It.</b></div>
+          </div>
           <div><strong>11648 × 112 px</strong><span>East and West displays</span></div>
         </article>
+      </div>
+      <div class="stadium-application">
+        <div class="stadium-application-head">
+          <h3>In-stadium application</h3>
+          <p>A conceptual view of how the campaign can scale across the upper and lower fascia locations while maintaining one coordinated visual system.</p>
+        </div>
+        <div class="fascia-bowl" aria-label="Conceptual Allegiant Stadium fascia application">
+          <div class="fascia-band upper-north"><div class="fascia-band-content"><img src="assets/bdr-official-symbol-white.png" alt=""><strong>Visit. Own It. Play It.</strong></div></div>
+          <div class="fascia-band upper-south"><div class="fascia-band-content"><img src="assets/bdr-official-symbol-white.png" alt=""><strong>Visit.</strong><strong>Own It.</strong><strong>Play It.</strong></div></div>
+          <div class="fascia-band lower"><div class="fascia-band-content"><img src="assets/bdr-official-symbol-white.png" alt=""><strong>blackdesertresort.com</strong></div></div>
+          <span class="fascia-label one">Upper NE / NW</span>
+          <span class="fascia-label two">Upper South</span>
+          <span class="fascia-label three">Lower East / West</span>
+        </div>
       </div>
     </section>
 
