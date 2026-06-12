@@ -185,7 +185,7 @@
     .copy-reveal {
       position: absolute;
       z-index: 8;
-      inset: 12% 0;
+      inset: 10% 0;
       display: grid;
       grid-template-columns: 24% repeat(3, 1fr);
       align-items: center;
@@ -204,11 +204,11 @@
 
     .copy-reveal > * {
       position: relative;
-      top: -10%;
+      top: 8%;
       align-self: center;
       opacity: 0;
-      transform: translateY(45%);
-      clip-path: inset(100% 0 0);
+      transform: none;
+      clip-path: inset(0 100% 0 0);
       animation-duration: var(--duration);
       animation-timing-function: cubic-bezier(.22,.72,.24,1);
       animation-iteration-count: infinite;
@@ -216,7 +216,7 @@
 
     .copy-reveal .official-logo {
       width: 92%;
-      height: 70%;
+      height: 58%;
       max-height: none;
       justify-self: center;
       animation-name: revealLogo;
@@ -224,11 +224,11 @@
 
     .copy-reveal .word {
       display: block;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(11px, 1.6vw, 28px);
+      font-family: "Avenir BDR", Arial, sans-serif;
+      font-size: clamp(10px, 1.35vw, 24px);
       font-weight: 400;
-      letter-spacing: -.045em;
-      line-height: .9;
+      letter-spacing: .015em;
+      line-height: 1;
       text-align: center;
       white-space: nowrap;
     }
@@ -238,27 +238,27 @@
     .copy-reveal .play { animation-name: revealPlay; }
 
     @keyframes revealLogo {
-      0%, 13% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
-      16%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
-      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+      0%, 13% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      16%, 59% { opacity: 1; clip-path: inset(0); }
+      64%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes revealVisit {
-      0%, 17% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
-      20%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
-      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+      0%, 17% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      20%, 59% { opacity: 1; clip-path: inset(0); }
+      64%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes revealOwn {
-      0%, 26% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
-      29%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
-      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+      0%, 26% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      29%, 59% { opacity: 1; clip-path: inset(0); }
+      64%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes revealPlay {
-      0%, 35% { opacity: 0; transform: translateY(45%); clip-path: inset(100% 0 0); }
-      38%, 59% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
-      64%, 100% { opacity: 0; transform: translateY(-45%); clip-path: inset(0 0 100%); }
+      0%, 35% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      38%, 59% { opacity: 1; clip-path: inset(0); }
+      64%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); }
     }
 
     .aerial-scene {
@@ -726,6 +726,7 @@
       width: 24%;
       max-height: 54%;
       object-fit: contain;
+      object-position: center;
     }
 
     .format-preview-content b {
@@ -984,13 +985,13 @@
         border-block-width: 3px;
       }
       .copy-reveal {
-        inset-block: 13%;
+        inset: 11% 0;
         grid-template-columns: 25% repeat(3, 1fr);
         gap: 2%;
         padding: 0 4%;
       }
-      .copy-reveal .official-logo { width: 90%; height: 68%; max-height: none; }
-      .copy-reveal .word { font-size: 9px; }
+      .copy-reveal .official-logo { width: 90%; height: 56%; max-height: none; }
+      .copy-reveal .word { font-size: 8px; }
       .photo-logo { right: 1.7%; width: 12.5%; }
       .golf-ball { width: 12px; }
       .controls { gap: 8px; }
