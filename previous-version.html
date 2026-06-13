@@ -209,53 +209,29 @@
     .persistent-logo {
       position: absolute;
       z-index: 8;
-      top: 50%;
+      top: 10%;
+      bottom: 10%;
       left: 5%;
       width: 22%;
+      display: flex;
+      align-items: center;
       opacity: 0;
-      transform: translateY(90%);
-      clip-path: inset(100% 0 0);
+      transform: translateX(-8%);
       animation-name: persistentLogo;
     }
 
-    .mini-lockup {
-      display: flex;
-      align-items: center;
-      gap: 6%;
-      min-width: 0;
-    }
-
-    .mini-lockup > img {
-      width: 21%;
-      max-height: 74%;
+    .official-lockup {
+      display: block;
+      width: 100%;
+      height: 72%;
       object-fit: contain;
-      transform: scale(2.15);
-    }
-
-    .mini-wordmark {
-      display: grid;
-      line-height: .84;
-      white-space: nowrap;
-    }
-
-    .mini-wordmark b {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(7px, 1.28vw, 21px);
-      font-weight: 400;
-      letter-spacing: .035em;
-    }
-
-    .mini-wordmark small {
-      margin-top: 7%;
-      font-size: clamp(4px, .58vw, 10px);
-      letter-spacing: .44em;
-      text-align: center;
+      object-position: center;
     }
 
     @keyframes persistentLogo {
-      0%, 3% { opacity: 0; transform: translateY(90%); clip-path: inset(100% 0 0); }
-      9%, 61% { opacity: 1; transform: translateY(-50%); clip-path: inset(0); }
-      66%, 100% { opacity: 0; transform: translateY(-145%); clip-path: inset(0 0 100%); }
+      0%, 3% { opacity: 0; transform: translateX(-8%); }
+      9%, 61% { opacity: 1; transform: translateX(0); }
+      66%, 100% { opacity: 0; transform: translateX(8%); }
     }
 
     .word {
@@ -348,7 +324,10 @@
       animation-name: endCard;
     }
 
-    .end-card .mini-lockup { width: 31%; }
+    .end-card .official-lockup {
+      width: 31%;
+      height: 62%;
+    }
 
     .end-card span {
       padding-left: 5%;
@@ -862,8 +841,7 @@
         border-block-width: 3px;
       }
       .persistent-logo { left: 4%; width: 25%; }
-      .mini-wordmark b { font-size: 7px; }
-      .mini-wordmark small { font-size: 4px; }
+      .persistent-logo .official-lockup { height: 68%; }
       .word { font-size: 12px; }
       .word.visit { left: 34%; }
       .word.own { left: 51%; }
@@ -1069,13 +1047,13 @@
   <template id="motionTemplate">
     <div class="orange-field"></div>
     <div class="persistent-logo" aria-label="Black Desert Resort">
-      <div class="mini-lockup"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div>
+      <img class="official-lockup" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort">
     </div>
     <div class="word visit">Visit.</div>
     <div class="word own">Own It.</div>
     <div class="word play">Play It.</div>
     <div class="aerial-scene" aria-label="Aerial view of the Black Desert Resort property and golf course"></div>
-    <div class="end-card"><div class="mini-lockup" aria-label="Black Desert Resort"><img src="assets/bdr-official-symbol-white.png" alt=""><span class="mini-wordmark"><b>BLACK DESERT</b><small>RESORT</small></span></div><span>blackdesertresort.com</span></div>
+    <div class="end-card"><img class="official-lockup" src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"><span>blackdesertresort.com</span></div>
     <div class="golf-ball" aria-label="Animated golf ball"></div>
   </template>
 
