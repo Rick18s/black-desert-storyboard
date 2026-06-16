@@ -223,6 +223,98 @@
       to { transform: translateX(-50%); }
     }
 
+    .image-window {
+      position: relative;
+      height: clamp(126px, 10vw, 168px);
+      overflow: hidden;
+      border-block: 5px solid #050505;
+      background: var(--orange);
+      box-shadow: 0 0 38px rgba(217,97,23,.3);
+    }
+
+    .image-strip {
+      position: absolute;
+      inset: 0 auto 0 0;
+      display: flex;
+      height: 100%;
+      animation: travel 78s linear infinite;
+    }
+
+    .image-strip-sequence {
+      display: flex;
+      height: 100%;
+      flex: 0 0 auto;
+    }
+
+    .orange-module,
+    .photo-panel {
+      position: relative;
+      height: 100%;
+      flex: 0 0 auto;
+    }
+
+    .orange-module {
+      width: clamp(190px, 24vw, 420px);
+      display: grid;
+      place-items: center;
+      padding: 0 28px;
+      color: white;
+      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+    }
+
+    .orange-module img {
+      width: min(170px, 48%);
+      max-height: 58%;
+      object-fit: contain;
+    }
+
+    .orange-module strong {
+      font-family: "Freight BDR", Georgia, serif;
+      font-size: clamp(19px, 2.1vw, 36px);
+      font-weight: 400;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .orange-module small {
+      color: rgba(255,255,255,.84);
+      font-size: clamp(9px, .8vw, 13px);
+      font-weight: 800;
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .photo-panel {
+      width: clamp(260px, 34vw, 560px);
+      overflow: hidden;
+      background: #11100e;
+    }
+
+    .photo-panel img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(181,74,19,.95), transparent 18% 82%, rgba(181,74,19,.95)),
+        linear-gradient(0deg, rgba(0,0,0,.18), transparent 42%);
+      pointer-events: none;
+    }
+
+    .image-window::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(17,16,14,.82), transparent 8% 92%, rgba(17,16,14,.82));
+    }
+
     .controls {
       display: flex;
       justify-content: center;
@@ -319,7 +411,10 @@
       .details { grid-template-columns: 1fr; }
       .panel-head { align-items: start; flex-direction: column; }
       .full-frame { height: 112px; }
-      .readable-window { height: 126px; }
+      .readable-window,
+      .image-window { height: 126px; }
+      .orange-module { width: 210px; }
+      .photo-panel { width: 290px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -369,19 +464,57 @@
         <span>Horizontal travel study</span>
       </div>
       <div class="readable-window" aria-label="Animated travel preview of the client supplied ribbon design">
-        <div class="travel-strip" id="travelStrip">
+        <div class="travel-strip animated-strip" id="travelStrip">
           <img src="assets/client-upper-fascia-south.png" alt="">
           <img src="assets/client-upper-fascia-south.png" alt="">
         </div>
       </div>
       <div class="controls" aria-label="Animation controls">
-        <button class="control" id="toggleMotion" type="button">Pause</button>
-        <button class="control" id="restartMotion" type="button">Replay</button>
+        <button class="control" id="toggleMotion" type="button">Pause previews</button>
+        <button class="control" id="restartMotion" type="button">Replay previews</button>
       </div>
       <div class="details">
         <div><small>Fills display</small><p>The source artwork is built at the exact Upper Fascia South pixel size.</p></div>
         <div><small>Modular rhythm</small><p>The logo, line and URL repeat across the long board by design.</p></div>
         <div><small>Approval path</small><p>Once approved, the same system can be adapted to the other fascia sizes.</p></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Image panel motion option</h2>
+        <span>Storyboard image treatment</span>
+      </div>
+      <div class="image-window" aria-label="Motion preview using supplied image panels">
+        <div class="image-strip animated-strip" id="imageStrip">
+          <div class="image-strip-sequence">
+            <div class="orange-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+            <div class="orange-module"><strong>Visit</strong></div>
+            <div class="photo-panel"><img src="assets/client-image-visit.jpg" alt="Golfers at Black Desert Resort"></div>
+            <div class="orange-module"><strong>Own it</strong></div>
+            <div class="photo-panel"><img src="assets/client-image-ownit.jpg" alt="Aerial view of Black Desert Resort"></div>
+            <div class="orange-module"><strong>Play it</strong></div>
+            <div class="photo-panel"><img src="assets/client-image-playit2.jpg" alt="Golf course landscape"></div>
+            <div class="orange-module"><small>blackdesertresort.com</small></div>
+            <div class="photo-panel"><img src="assets/client-image-playit.jpg" alt="Black Desert golf landscape"></div>
+          </div>
+          <div class="image-strip-sequence" aria-hidden="true">
+            <div class="orange-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+            <div class="orange-module"><strong>Visit</strong></div>
+            <div class="photo-panel"><img src="assets/client-image-visit.jpg" alt=""></div>
+            <div class="orange-module"><strong>Own it</strong></div>
+            <div class="photo-panel"><img src="assets/client-image-ownit.jpg" alt=""></div>
+            <div class="orange-module"><strong>Play it</strong></div>
+            <div class="photo-panel"><img src="assets/client-image-playit2.jpg" alt=""></div>
+            <div class="orange-module"><small>blackdesertresort.com</small></div>
+            <div class="photo-panel"><img src="assets/client-image-playit.jpg" alt=""></div>
+          </div>
+        </div>
+      </div>
+      <div class="details">
+        <div><small>Image usage</small><p>Supplied resort and golf imagery appears as short panels between orange brand blocks.</p></div>
+        <div><small>Clean read</small><p>Text stays on orange, never over the photography, preserving legibility on the LED ribbon.</p></div>
+        <div><small>Motion option</small><p>This can be treated as an alternate direction if the client wants the photo rhythm from the storyboard.</p></div>
       </div>
     </section>
 
@@ -393,29 +526,31 @@
       <div class="beats">
         <article class="beat"><b>01</b><div><strong>Brand modules</strong><p>Logo, campaign line and URL repeat across the full fascia length.</p></div></article>
         <article class="beat"><b>02</b><div><strong>Slow horizontal travel</strong><p>The full design drifts across the ribbon so each module can be read.</p></div></article>
-        <article class="beat"><b>03</b><div><strong>No visual clutter</strong><p>The presentation focuses on the supplied design rather than showing the dense PDF contact sheet.</p></div></article>
+        <article class="beat"><b>03</b><div><strong>Image panels</strong><p>Supplied photos can appear between orange blocks without placing type over imagery.</p></div></article>
         <article class="beat"><b>04</b><div><strong>Approval first</strong><p>Once this size is approved, the same system can be adapted to the remaining LED formats.</p></div></article>
       </div>
     </section>
   </main>
 
   <script>
-    const strip = document.querySelector("#travelStrip");
+    const strips = [...document.querySelectorAll(".animated-strip")];
     const toggle = document.querySelector("#toggleMotion");
     toggle.addEventListener("click", () => {
-      const paused = strip.style.animationPlayState !== "paused";
-      strip.style.animationPlayState = paused ? "paused" : "running";
-      toggle.textContent = paused ? "Play" : "Pause";
+      const paused = strips[0].style.animationPlayState !== "paused";
+      strips.forEach(strip => { strip.style.animationPlayState = paused ? "paused" : "running"; });
+      toggle.textContent = paused ? "Play previews" : "Pause previews";
       toggle.classList.toggle("active", paused);
     });
 
     document.querySelector("#restartMotion").addEventListener("click", () => {
-      strip.getAnimations().forEach(animation => {
-        animation.cancel();
-        animation.play();
+      strips.forEach(strip => {
+        strip.getAnimations().forEach(animation => {
+          animation.cancel();
+          animation.play();
+        });
+        strip.style.animationPlayState = "running";
       });
-      strip.style.animationPlayState = "running";
-      toggle.textContent = "Pause";
+      toggle.textContent = "Pause previews";
       toggle.classList.remove("active");
     });
   </script>
