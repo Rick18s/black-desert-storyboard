@@ -29,7 +29,7 @@
       --orange-bright: #d96117;
       --ink: #11100e;
       --paper: #f3efe8;
-      --duration: 14s;
+      --duration: 60s;
     }
 
     * { box-sizing: border-box; }
@@ -165,22 +165,30 @@
 
     .full-frame {
       position: relative;
+      height: clamp(124px, 10vw, 172px);
       overflow: hidden;
       border-block: 4px solid #050505;
       background: var(--orange);
       box-shadow: 0 0 30px rgba(217,97,23,.22);
     }
 
+    .full-frame-scroll {
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-color: var(--orange-bright) #211813;
+    }
+
     .full-frame img {
       display: block;
-      width: 100%;
-      height: 42px;
-      object-fit: fill;
+      width: auto;
+      height: 100%;
+      max-width: none;
     }
 
     .readable-window {
       position: relative;
-      height: clamp(92px, 8vw, 128px);
+      height: clamp(130px, 11vw, 178px);
       overflow: hidden;
       border-block: 5px solid #050505;
       background: var(--orange);
@@ -266,32 +274,16 @@
       line-height: 1.5;
     }
 
-    .storyboard-grid {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .storyboard {
-      display: block;
-      width: 100%;
-      border: 1px solid rgba(255,255,255,.12);
-      background: #050505;
-    }
-
     .beats {
       display: grid;
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.1);
     }
 
     .beat {
-      display: grid;
-      grid-template-columns: 98px 1fr;
-      gap: 18px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.1);
-      background: rgba(255,255,255,.035);
+      padding: 22px;
+      background: #171512;
     }
 
     .beat b {
@@ -323,11 +315,11 @@
       }
       .version-tabs { justify-content: flex-start; }
       .intro,
-      .storyboard-grid,
+      .beats,
       .details { grid-template-columns: 1fr; }
       .panel-head { align-items: start; flex-direction: column; }
-      .full-frame img { height: 34px; }
-      .readable-window { height: 110px; }
+      .full-frame { height: 112px; }
+      .readable-window { height: 126px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -362,10 +354,12 @@
     <section class="panel">
       <div class="panel-head">
         <h2>Full supplied frame</h2>
-        <span>24496 × 112 px source · enlarged for web readability</span>
+        <span>24496 × 112 px source · scroll to inspect</span>
       </div>
       <div class="full-frame">
-        <img src="assets/client-upper-fascia-south.png" alt="Full client supplied Upper Fascia South ribbon design">
+        <div class="full-frame-scroll">
+          <img src="assets/client-upper-fascia-south.png" alt="Full client supplied Upper Fascia South ribbon design">
+        </div>
       </div>
     </section>
 
@@ -393,17 +387,14 @@
 
     <section class="panel">
       <div class="panel-head">
-        <h2>Storyboard reference</h2>
-        <span>Client PDF</span>
+        <h2>Clean storyboard read</h2>
+        <span>Motion direction</span>
       </div>
-      <div class="storyboard-grid">
-        <img class="storyboard" src="assets/client-storyboard.png" alt="Client storyboard reference">
-        <div class="beats">
-          <article class="beat"><b>Option 01</b><div><strong>Logo / message rhythm</strong><p>Brand mark, campaign line and URL repeat along the full fascia length.</p></div></article>
-          <article class="beat"><b>Option 02</b><div><strong>Logo anchor</strong><p>The Black Desert Resort logo can hold as a clean brand read before copy movement begins.</p></div></article>
-          <article class="beat"><b>Option 03</b><div><strong>Image interrupts</strong><p>Photography can be introduced as short panels between orange copy blocks.</p></div></article>
-          <article class="beat"><b>Option 04</b><div><strong>Text-only sweep</strong><p>The campaign line can travel as a repeated typographic ribbon for maximum legibility.</p></div></article>
-        </div>
+      <div class="beats">
+        <article class="beat"><b>01</b><div><strong>Brand modules</strong><p>Logo, campaign line and URL repeat across the full fascia length.</p></div></article>
+        <article class="beat"><b>02</b><div><strong>Slow horizontal travel</strong><p>The full design drifts across the ribbon so each module can be read.</p></div></article>
+        <article class="beat"><b>03</b><div><strong>No visual clutter</strong><p>The presentation focuses on the supplied design rather than showing the dense PDF contact sheet.</p></div></article>
+        <article class="beat"><b>04</b><div><strong>Approval first</strong><p>Once this size is approved, the same system can be adapted to the remaining LED formats.</p></div></article>
       </div>
     </section>
   </main>
