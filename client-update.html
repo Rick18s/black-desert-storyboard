@@ -252,6 +252,105 @@
       50% { transform: translateX(-3%); }
     }
 
+    .format-comparison {
+      display: grid;
+      gap: 30px;
+      padding: clamp(22px, 3vw, 46px);
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.025);
+      box-shadow: 0 35px 90px rgba(0,0,0,.3);
+    }
+
+    .format-row {
+      display: grid;
+      gap: 10px;
+    }
+
+    .format-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,.52);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .format-meta strong { color: white; }
+
+    .format-track {
+      width: 100%;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.035), transparent),
+        repeating-linear-gradient(90deg, transparent 0 11px, rgba(255,255,255,.018) 11px 12px);
+    }
+
+    .format-ribbon {
+      position: relative;
+      height: 72px;
+      overflow: hidden;
+      border-block: 4px solid #050505;
+      background: var(--orange);
+      box-shadow: 0 0 30px rgba(217,97,23,.24);
+      container-type: inline-size;
+    }
+
+    .format-ribbon.long { width: 100%; }
+    .format-ribbon.medium { width: 47.551%; }
+    .format-ribbon.short { width: 34.699%; }
+
+    .format-motion {
+      position: absolute;
+      inset: 0 auto 0 0;
+      display: flex;
+      height: 100%;
+      animation: travel 36s linear infinite;
+    }
+
+    .format-sequence {
+      display: flex;
+      height: 100%;
+      flex: 0 0 auto;
+    }
+
+    .format-module {
+      width: 30cqw;
+      height: 100%;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      padding: 0 3cqw;
+      color: white;
+      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .format-module img {
+      width: 70%;
+      max-height: 58%;
+      object-fit: contain;
+    }
+
+    .format-module strong {
+      font-family: "Freight BDR", Georgia, serif;
+      font-size: clamp(7px, 2.5cqw, 24px);
+      font-weight: 400;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .format-module small {
+      font-size: clamp(4px, .95cqw, 11px);
+      font-weight: 800;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
     .exact-frame {
       position: relative;
       height: 112px;
@@ -546,6 +645,17 @@
       .full-frame { height: 112px; }
       .exact-frame { height: 112px; }
       .overview-window { height: 74px; }
+      .format-comparison {
+        gap: 24px;
+        padding: 18px 14px;
+      }
+      .format-track {
+        min-width: 650px;
+      }
+      .format-comparison-scroll {
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
       .readable-window,
       .image-window { height: 126px; }
       .brand-module { width: 225px; }
@@ -622,6 +732,96 @@
 
     <section class="panel">
       <div class="panel-head">
+        <h2>All final screen formats</h2>
+        <span>Proportional preview · same motion system</span>
+      </div>
+      <div class="format-comparison-scroll">
+        <div class="format-comparison" aria-label="Client update motion across three final LED formats">
+          <article class="format-row">
+            <div class="format-meta"><strong>Upper Fascia South</strong><span>24496 × 112 px · 100% reference width</span></div>
+            <div class="format-track">
+              <div class="format-ribbon long">
+                <div class="format-motion animated-strip">
+                  <div class="format-sequence">
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                  </div>
+                  <div class="format-sequence" aria-hidden="true">
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="format-row">
+            <div class="format-meta"><strong>Lower Fascia East / West</strong><span>11648 × 112 px · 47.55% relative width</span></div>
+            <div class="format-track">
+              <div class="format-ribbon medium">
+                <div class="format-motion animated-strip">
+                  <div class="format-sequence">
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                  </div>
+                  <div class="format-sequence" aria-hidden="true">
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="format-row">
+            <div class="format-meta"><strong>Upper Fascia Northeast / Northwest</strong><span>8500 × 112 px · 34.70% relative width</span></div>
+            <div class="format-track">
+              <div class="format-ribbon short">
+                <div class="format-motion animated-strip">
+                  <div class="format-sequence">
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+                  </div>
+                  <div class="format-sequence" aria-hidden="true">
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+                    <div class="format-module"><strong>Visit. Own it. Play it.</strong></div>
+                    <div class="format-module"><small>blackdesertresort.com</small></div>
+                    <div class="format-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="exact-meta">
+        <span>Widths are proportional to the final pixel specs</span>
+        <span>Text remains live HTML, not horizontally compressed</span>
+      </div>
+      <div class="controls" aria-label="All format animation controls">
+        <button class="control" data-toggle-motion type="button">Pause previews</button>
+        <button class="control" data-restart-motion type="button">Replay previews</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
         <h2>Readable inspection view</h2>
         <span>Same source · enlarged with scroll</span>
       </div>
@@ -674,8 +874,8 @@
         </div>
       </div>
       <div class="controls" aria-label="Animation controls">
-        <button class="control" id="toggleMotion" type="button">Pause previews</button>
-        <button class="control" id="restartMotion" type="button">Replay previews</button>
+        <button class="control" data-toggle-motion type="button">Pause previews</button>
+        <button class="control" data-restart-motion type="button">Replay previews</button>
       </div>
       <div class="details">
         <div><small>Fills display</small><p>The source artwork is built at the exact Upper Fascia South pixel size.</p></div>
@@ -738,15 +938,25 @@
 
   <script>
     const strips = [...document.querySelectorAll(".animated-strip")];
-    const toggle = document.querySelector("#toggleMotion");
-    toggle.addEventListener("click", () => {
-      const paused = strips[0].style.animationPlayState !== "paused";
+    const toggles = [...document.querySelectorAll("[data-toggle-motion]")];
+    const restarts = [...document.querySelectorAll("[data-restart-motion]")];
+
+    function setPaused(paused) {
       strips.forEach(strip => { strip.style.animationPlayState = paused ? "paused" : "running"; });
-      toggle.textContent = paused ? "Play previews" : "Pause previews";
-      toggle.classList.toggle("active", paused);
+      toggles.forEach(toggle => {
+        toggle.textContent = paused ? "Play previews" : "Pause previews";
+        toggle.classList.toggle("active", paused);
+      });
+    }
+
+    toggles.forEach(toggle => {
+      toggle.addEventListener("click", () => {
+        const paused = strips[0].style.animationPlayState !== "paused";
+        setPaused(paused);
+      });
     });
 
-    document.querySelector("#restartMotion").addEventListener("click", () => {
+    restarts.forEach(restart => restart.addEventListener("click", () => {
       strips.forEach(strip => {
         strip.style.animationPlayState = "running";
         strip.getAnimations().forEach(animation => {
@@ -755,9 +965,8 @@
         });
         strip.style.animationPlayState = "running";
       });
-      toggle.textContent = "Pause previews";
-      toggle.classList.remove("active");
-    });
+      setPaused(false);
+    }));
   </script>
 </body>
 </html>
