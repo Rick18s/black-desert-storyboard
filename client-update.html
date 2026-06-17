@@ -29,7 +29,7 @@
       --orange-bright: #d96117;
       --ink: #11100e;
       --paper: #f3efe8;
-      --duration: 24s;
+      --duration: 34s;
     }
 
     * { box-sizing: border-box; }
@@ -200,15 +200,46 @@
       inset: 0 auto 0 0;
       display: flex;
       height: 100%;
-      animation: travelWide var(--duration) ease-in-out infinite alternate;
+      animation: travel var(--duration) linear infinite;
     }
 
-    .travel-strip img {
-      display: block;
-      width: min(260vw, 2820px);
+    .brand-sequence {
+      display: flex;
       height: 100%;
       flex: 0 0 auto;
-      object-fit: fill;
+    }
+
+    .brand-module {
+      position: relative;
+      width: clamp(210px, 25vw, 430px);
+      height: 100%;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      padding: 0 26px;
+      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+    }
+
+    .brand-module img {
+      width: min(210px, 62%);
+      max-height: 58%;
+      object-fit: contain;
+    }
+
+    .brand-module strong {
+      font-family: "Freight BDR", Georgia, serif;
+      font-size: clamp(18px, 1.85vw, 34px);
+      font-weight: 400;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .brand-module small {
+      color: rgba(255,255,255,.84);
+      font-size: clamp(9px, .8vw, 13px);
+      font-weight: 800;
+      letter-spacing: .03em;
+      white-space: nowrap;
     }
 
     .readable-window::after {
@@ -222,11 +253,6 @@
     @keyframes travel {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
-    }
-
-    @keyframes travelWide {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-100% + 100vw)); }
     }
 
     .image-window {
@@ -419,7 +445,7 @@
       .full-frame { height: 112px; }
       .readable-window,
       .image-window { height: 126px; }
-      .travel-strip img { width: 1800px; }
+      .brand-module { width: 225px; }
       .orange-module { width: 170px; }
       .photo-panel { width: 240px; }
     }
@@ -468,11 +494,26 @@
     <section class="panel">
       <div class="panel-head">
         <h2>Wide motion preview</h2>
-        <span>Scaled down to show multiple animation modules</span>
+        <span>Readable module preview · no text distortion</span>
       </div>
       <div class="readable-window" aria-label="Animated travel preview of the client supplied ribbon design">
         <div class="travel-strip animated-strip" id="travelStrip">
-          <img src="assets/client-upper-fascia-south.png" alt="">
+          <div class="brand-sequence">
+            <div class="brand-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+            <div class="brand-module"><strong>Visit. Own it. Play it.</strong></div>
+            <div class="brand-module"><small>blackdesertresort.com</small></div>
+            <div class="brand-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+            <div class="brand-module"><strong>Visit. Own it. Play it.</strong></div>
+            <div class="brand-module"><small>blackdesertresort.com</small></div>
+          </div>
+          <div class="brand-sequence" aria-hidden="true">
+            <div class="brand-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+            <div class="brand-module"><strong>Visit. Own it. Play it.</strong></div>
+            <div class="brand-module"><small>blackdesertresort.com</small></div>
+            <div class="brand-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
+            <div class="brand-module"><strong>Visit. Own it. Play it.</strong></div>
+            <div class="brand-module"><small>blackdesertresort.com</small></div>
+          </div>
         </div>
       </div>
       <div class="controls" aria-label="Animation controls">
