@@ -186,6 +186,41 @@
       max-width: none;
     }
 
+    .exact-frame {
+      position: relative;
+      height: 112px;
+      overflow: hidden;
+      border-block: 4px solid #050505;
+      background: var(--orange);
+      box-shadow: 0 0 30px rgba(217,97,23,.22);
+    }
+
+    .exact-frame-scroll {
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-color: var(--orange-bright) #211813;
+    }
+
+    .exact-frame img {
+      display: block;
+      width: 24496px;
+      height: 112px;
+      max-width: none;
+    }
+
+    .exact-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 10px;
+      color: rgba(255,255,255,.5);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
     .readable-window {
       position: relative;
       height: clamp(128px, 10vw, 164px);
@@ -443,6 +478,7 @@
       .details { grid-template-columns: 1fr; }
       .panel-head { align-items: start; flex-direction: column; }
       .full-frame { height: 112px; }
+      .exact-frame { height: 112px; }
       .readable-window,
       .image-window { height: 126px; }
       .brand-module { width: 225px; }
@@ -488,6 +524,22 @@
         <div class="full-frame-scroll">
           <img src="assets/client-upper-fascia-south.png" alt="Full client supplied Upper Fascia South ribbon design">
         </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Exact pixel view</h2>
+        <span>Actual file size · 24496 × 112 px</span>
+      </div>
+      <div class="exact-frame">
+        <div class="exact-frame-scroll">
+          <img src="assets/client-upper-fascia-south.png" alt="Actual 24496 by 112 pixel Upper Fascia South design">
+        </div>
+      </div>
+      <div class="exact-meta">
+        <span>Height shown at exact 112 px</span>
+        <span>Scroll horizontally to inspect all 24496 px</span>
       </div>
     </section>
 
