@@ -132,6 +132,20 @@
       line-height: 1.5;
     }
 
+    .render-note {
+      margin: -18px 0 28px;
+      padding: 18px 22px;
+      border: 1px solid rgba(217,97,23,.42);
+      background: rgba(217,97,23,.1);
+      color: rgba(255,255,255,.72);
+      line-height: 1.5;
+    }
+
+    .render-note strong {
+      color: white;
+      font-weight: 800;
+    }
+
     .panel {
       margin-top: 22px;
       padding: clamp(20px, 3vw, 40px);
@@ -223,7 +237,7 @@
       display: grid;
       place-items: center;
       padding: 0 12px;
-      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+      background: var(--orange);
       border-right: 1px solid rgba(255,255,255,.08);
       overflow: hidden;
     }
@@ -325,7 +339,7 @@
       place-items: center;
       padding: 0 3cqw;
       color: white;
-      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+      background: var(--orange);
       border-right: 1px solid rgba(255,255,255,.08);
       overflow: hidden;
     }
@@ -417,7 +431,7 @@
       display: grid;
       place-items: center;
       padding: 0 26px;
-      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+      background: var(--orange);
     }
 
     .brand-module img {
@@ -447,7 +461,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(90deg, rgba(17,16,14,.8), transparent 9% 91%, rgba(17,16,14,.8));
+      border-inline: 1px solid rgba(255,255,255,.08);
     }
 
     @keyframes travel {
@@ -491,7 +505,7 @@
       place-items: center;
       padding: 0 28px;
       color: white;
-      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+      background: var(--orange);
     }
 
     .orange-module img {
@@ -529,22 +543,12 @@
       object-fit: cover;
     }
 
-    .photo-panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(181,74,19,.95), transparent 18% 82%, rgba(181,74,19,.95)),
-        linear-gradient(0deg, rgba(0,0,0,.18), transparent 42%);
-      pointer-events: none;
-    }
-
     .image-window::after {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(90deg, rgba(17,16,14,.82), transparent 8% 92%, rgba(17,16,14,.82));
+      border-inline: 1px solid rgba(255,255,255,.08);
     }
 
     .controls {
@@ -691,6 +695,12 @@
         how the ribbon can travel horizontally across the stadium display.
       </p>
     </section>
+
+    <div class="render-note">
+      <strong>Render note:</strong> this browser page is a motion/layout proof and may scale visually
+      with the browser window. The client approval file should be the exported full render at
+      <strong>24496 × 112 px</strong>, not a browser screenshot.
+    </div>
 
     <section class="panel">
       <div class="panel-head">
@@ -892,7 +902,6 @@
       <div class="image-window" aria-label="Motion preview using supplied image panels">
         <div class="image-strip animated-strip" id="imageStrip">
           <div class="image-strip-sequence">
-            <div class="orange-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
             <div class="orange-module"><strong>Visit</strong></div>
             <div class="photo-panel"><img src="assets/client-image-visit.jpg" alt="Golfers at Black Desert Resort"></div>
             <div class="orange-module"><strong>Own it</strong></div>
@@ -903,7 +912,6 @@
             <div class="photo-panel"><img src="assets/client-image-playit.jpg" alt="Black Desert golf landscape"></div>
           </div>
           <div class="image-strip-sequence" aria-hidden="true">
-            <div class="orange-module"><img src="assets/bdr-horizontal-white-official.png" alt=""></div>
             <div class="orange-module"><strong>Visit</strong></div>
             <div class="photo-panel"><img src="assets/client-image-visit.jpg" alt=""></div>
             <div class="orange-module"><strong>Own it</strong></div>
@@ -916,22 +924,22 @@
         </div>
       </div>
       <div class="details">
-        <div><small>Image usage</small><p>Supplied resort and golf imagery appears as short panels between orange brand blocks.</p></div>
-        <div><small>Clean read</small><p>Text stays on orange, never over the photography, preserving legibility on the LED ribbon.</p></div>
+        <div><small>Image usage</small><p>Supplied resort and golf imagery appears as short panels between orange copy blocks.</p></div>
+        <div><small>Clean read</small><p>Text stays on solid orange, never over photography, preserving legibility on the LED ribbon.</p></div>
         <div><small>Motion option</small><p>This can be treated as an alternate direction if the client wants the photo rhythm from the storyboard.</p></div>
       </div>
     </section>
 
     <section class="panel">
       <div class="panel-head">
-        <h2>Clean storyboard read</h2>
-        <span>Motion direction</span>
+        <h2>Storyboard scene sequence</h2>
+        <span>Scene 1–4 confirmation</span>
       </div>
       <div class="beats">
-        <article class="beat"><b>01</b><div><strong>Brand modules</strong><p>Logo, campaign line and URL repeat across the full fascia length.</p></div></article>
-        <article class="beat"><b>02</b><div><strong>Slow horizontal travel</strong><p>The full design drifts across the ribbon so each module can be read.</p></div></article>
-        <article class="beat"><b>03</b><div><strong>Image panels</strong><p>Supplied photos can appear between orange blocks without placing type over imagery.</p></div></article>
-        <article class="beat"><b>04</b><div><strong>Approval first</strong><p>Once this size is approved, the same system can be adapted to the remaining LED formats.</p></div></article>
+        <article class="beat"><b>Scene 01</b><div><strong>Logo animation</strong><p>Solid orange field enters, then BDR logos animate on sequentially and roll out.</p></div></article>
+        <article class="beat"><b>Scene 02</b><div><strong>Visit / Own it / Play it + photos</strong><p>Copy and photo panels alternate. No logo is placed over the photo/text sequence.</p></div></article>
+        <article class="beat"><b>Scene 03</b><div><strong>Type-only sweep</strong><p>Visit. Own it. Play it. animates on as a repeated type ribbon, then rolls left.</p></div></article>
+        <article class="beat"><b>Scene 04</b><div><strong>Lockup close</strong><p>BDR logo and URL return on solid orange, then the orange field exits.</p></div></article>
       </div>
     </section>
   </main>
