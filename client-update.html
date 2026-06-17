@@ -186,6 +186,72 @@
       max-width: none;
     }
 
+    .fit-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 24496 / 112;
+      overflow: hidden;
+      background: var(--orange);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 0 30px rgba(217,97,23,.22);
+    }
+
+    .fit-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .overview-window {
+      position: relative;
+      height: clamp(64px, 7vw, 106px);
+      overflow: hidden;
+      border-block: 4px solid #050505;
+      background: var(--orange);
+      box-shadow: 0 0 34px rgba(217,97,23,.25);
+    }
+
+    .overview-strip {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      align-items: stretch;
+      animation: overviewPulse 8s ease-in-out infinite;
+    }
+
+    .overview-module {
+      display: grid;
+      place-items: center;
+      padding: 0 12px;
+      background: linear-gradient(90deg, #a74110, var(--orange), #cf5d1a);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .overview-module img {
+      width: min(130px, 76%);
+      max-height: 58%;
+      object-fit: contain;
+    }
+
+    .overview-module strong {
+      font-family: "Freight BDR", Georgia, serif;
+      font-size: clamp(8px, 1.15vw, 20px);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .overview-module small {
+      font-size: clamp(5px, .62vw, 11px);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    @keyframes overviewPulse {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-3%); }
+    }
+
     .exact-frame {
       position: relative;
       height: 112px;
@@ -479,6 +545,7 @@
       .panel-head { align-items: start; flex-direction: column; }
       .full-frame { height: 112px; }
       .exact-frame { height: 112px; }
+      .overview-window { height: 74px; }
       .readable-window,
       .image-window { height: 126px; }
       .brand-module { width: 225px; }
@@ -517,8 +584,46 @@
 
     <section class="panel">
       <div class="panel-head">
-        <h2>Full supplied frame</h2>
-        <span>24496 × 112 px source · scroll to inspect</span>
+        <h2>Full frame fit to page</h2>
+        <span>Entire 24496 × 112 px layout visible at once</span>
+      </div>
+      <div class="fit-frame">
+        <img src="assets/client-upper-fascia-south.png" alt="Full client supplied Upper Fascia South ribbon design fit to page">
+      </div>
+      <div class="exact-meta">
+        <span>No scroll in this view</span>
+        <span>True proportional fit, so it appears extremely thin</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Full animation overview</h2>
+        <span>Entire ribbon visible · enlarged height for approval</span>
+      </div>
+      <div class="overview-window" aria-label="Full ribbon animation overview">
+        <div class="overview-strip animated-strip">
+          <div class="overview-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="overview-module"><strong>Visit. Own it. Play it.</strong></div>
+          <div class="overview-module"><small>blackdesertresort.com</small></div>
+          <div class="overview-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="overview-module"><strong>Visit. Own it. Play it.</strong></div>
+          <div class="overview-module"><small>blackdesertresort.com</small></div>
+          <div class="overview-module"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="overview-module"><strong>Visit. Own it. Play it.</strong></div>
+          <div class="overview-module"><small>blackdesertresort.com</small></div>
+        </div>
+      </div>
+      <div class="exact-meta">
+        <span>Entire animation visible at once</span>
+        <span>No horizontal scroll required</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Readable inspection view</h2>
+        <span>Same source · enlarged with scroll</span>
       </div>
       <div class="full-frame">
         <div class="full-frame-scroll">
