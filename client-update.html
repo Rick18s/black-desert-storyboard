@@ -29,7 +29,7 @@
       --orange-bright: #d96117;
       --ink: #11100e;
       --paper: #f3efe8;
-      --duration: 60s;
+      --duration: 24s;
     }
 
     * { box-sizing: border-box; }
@@ -188,7 +188,7 @@
 
     .readable-window {
       position: relative;
-      height: clamp(130px, 11vw, 178px);
+      height: clamp(128px, 10vw, 164px);
       overflow: hidden;
       border-block: 5px solid #050505;
       background: var(--orange);
@@ -200,14 +200,15 @@
       inset: 0 auto 0 0;
       display: flex;
       height: 100%;
-      animation: travel var(--duration) linear infinite;
+      animation: travelWide var(--duration) ease-in-out infinite alternate;
     }
 
     .travel-strip img {
       display: block;
-      width: auto;
+      width: min(260vw, 2820px);
       height: 100%;
       flex: 0 0 auto;
+      object-fit: fill;
     }
 
     .readable-window::after {
@@ -223,9 +224,14 @@
       to { transform: translateX(-50%); }
     }
 
+    @keyframes travelWide {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-100% + 100vw)); }
+    }
+
     .image-window {
       position: relative;
-      height: clamp(126px, 10vw, 168px);
+      height: clamp(128px, 10vw, 164px);
       overflow: hidden;
       border-block: 5px solid #050505;
       background: var(--orange);
@@ -237,7 +243,7 @@
       inset: 0 auto 0 0;
       display: flex;
       height: 100%;
-      animation: travel 78s linear infinite;
+      animation: travel 42s linear infinite;
     }
 
     .image-strip-sequence {
@@ -254,7 +260,7 @@
     }
 
     .orange-module {
-      width: clamp(190px, 24vw, 420px);
+      width: clamp(155px, 18vw, 320px);
       display: grid;
       place-items: center;
       padding: 0 28px;
@@ -263,14 +269,14 @@
     }
 
     .orange-module img {
-      width: min(170px, 48%);
+      width: min(150px, 56%);
       max-height: 58%;
       object-fit: contain;
     }
 
     .orange-module strong {
       font-family: "Freight BDR", Georgia, serif;
-      font-size: clamp(19px, 2.1vw, 36px);
+      font-size: clamp(18px, 1.85vw, 32px);
       font-weight: 400;
       line-height: 1;
       white-space: nowrap;
@@ -285,7 +291,7 @@
     }
 
     .photo-panel {
-      width: clamp(260px, 34vw, 560px);
+      width: clamp(230px, 28vw, 480px);
       overflow: hidden;
       background: #11100e;
     }
@@ -413,8 +419,9 @@
       .full-frame { height: 112px; }
       .readable-window,
       .image-window { height: 126px; }
-      .orange-module { width: 210px; }
-      .photo-panel { width: 290px; }
+      .travel-strip img { width: 1800px; }
+      .orange-module { width: 170px; }
+      .photo-panel { width: 240px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -460,12 +467,11 @@
 
     <section class="panel">
       <div class="panel-head">
-        <h2>Readable motion preview</h2>
-        <span>Horizontal travel study</span>
+        <h2>Wide motion preview</h2>
+        <span>Scaled down to show multiple animation modules</span>
       </div>
       <div class="readable-window" aria-label="Animated travel preview of the client supplied ribbon design">
         <div class="travel-strip animated-strip" id="travelStrip">
-          <img src="assets/client-upper-fascia-south.png" alt="">
           <img src="assets/client-upper-fascia-south.png" alt="">
         </div>
       </div>
@@ -544,6 +550,7 @@
 
     document.querySelector("#restartMotion").addEventListener("click", () => {
       strips.forEach(strip => {
+        strip.style.animationPlayState = "running";
         strip.getAnimations().forEach(animation => {
           animation.cancel();
           animation.play();
