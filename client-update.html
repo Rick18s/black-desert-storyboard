@@ -204,6 +204,10 @@
       height: 100%;
     }
 
+    .scene-logo-grid {
+      animation: sceneLogoExit 12s ease-in-out infinite;
+    }
+
     .scene-logo-grid div,
     .scene-lockup-grid div {
       display: grid;
@@ -218,6 +222,29 @@
       width: min(170px, 72%);
       max-height: 58%;
       object-fit: contain;
+    }
+
+    .scene-logo-grid div {
+      opacity: 0;
+      transform: translateY(38%);
+      animation: sceneLogoIn 12s cubic-bezier(.4, 0, .2, 1) infinite;
+    }
+
+    .scene-logo-grid div:nth-child(1) { animation-delay: 0s; }
+    .scene-logo-grid div:nth-child(2) { animation-delay: .45s; }
+    .scene-logo-grid div:nth-child(3) { animation-delay: .9s; }
+    .scene-logo-grid div:nth-child(4) { animation-delay: 1.35s; }
+    .scene-logo-grid div:nth-child(5) { animation-delay: 1.8s; }
+
+    @keyframes sceneLogoIn {
+      0%, 8% { opacity: 0; transform: translateY(38%); }
+      16%, 72% { opacity: 1; transform: translateY(0); }
+      88%, 100% { opacity: 0; transform: translateY(-38%); }
+    }
+
+    @keyframes sceneLogoExit {
+      0%, 78% { transform: translateX(0); }
+      92%, 100% { transform: translateX(-12%); }
     }
 
     .scene-photo-track,
@@ -852,7 +879,7 @@
             <span>Solid orange field with BDR logos appearing in sequence before rolling out.</span>
           </div>
           <div class="scene-ribbon">
-            <div class="scene-logo-grid">
+            <div class="scene-logo-grid animated-strip">
               <div><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
               <div><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
               <div><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
@@ -1167,7 +1194,11 @@
     const restarts = [...document.querySelectorAll("[data-restart-motion]")];
 
     function setPaused(paused) {
-      strips.forEach(strip => { strip.style.animationPlayState = paused ? "paused" : "running"; });
+      strips.forEach(strip => {
+        [strip, ...strip.querySelectorAll("*")].forEach(el => {
+          el.style.animationPlayState = paused ? "paused" : "running";
+        });
+      });
       toggles.forEach(toggle => {
         toggle.textContent = paused ? "Play previews" : "Pause previews";
         toggle.classList.toggle("active", paused);
@@ -1183,12 +1214,13 @@
 
     restarts.forEach(restart => restart.addEventListener("click", () => {
       strips.forEach(strip => {
-        strip.style.animationPlayState = "running";
+        [strip, ...strip.querySelectorAll("*")].forEach(el => {
+          el.style.animationPlayState = "running";
+        });
         strip.getAnimations().forEach(animation => {
           animation.cancel();
           animation.play();
         });
-        strip.style.animationPlayState = "running";
       });
       setPaused(false);
     }));
