@@ -305,6 +305,207 @@
       object-fit: cover;
     }
 
+    .final-window {
+      position: relative;
+      height: clamp(132px, 12vw, 184px);
+      overflow: hidden;
+      border-block: 5px solid #050505;
+      background: var(--orange);
+      box-shadow: 0 0 42px rgba(217,97,23,.32);
+    }
+
+    .final-scene {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .final-scene-logo {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      animation: finalSceneLogo 24s linear infinite;
+    }
+
+    .final-scene-photos {
+      animation: finalScenePhotos 24s linear infinite;
+    }
+
+    .final-scene-type {
+      animation: finalSceneType 24s linear infinite;
+    }
+
+    .final-scene-lockup {
+      animation: finalSceneLockup 24s linear infinite;
+    }
+
+    .final-logo-tile,
+    .final-copy-tile,
+    .final-type-tile,
+    .final-url-tile,
+    .final-photo-tile {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+      background: var(--orange);
+    }
+
+    .final-logo-tile {
+      padding: 0 18px;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    .final-scene-logo .final-logo-tile {
+      opacity: 0;
+      transform: translateY(26px);
+      animation: finalLogoTile 24s ease-in-out infinite;
+    }
+
+    .final-scene-logo .final-logo-tile:nth-child(1) { animation-delay: 0s; }
+    .final-scene-logo .final-logo-tile:nth-child(2) { animation-delay: .25s; }
+    .final-scene-logo .final-logo-tile:nth-child(3) { animation-delay: .5s; }
+    .final-scene-logo .final-logo-tile:nth-child(4) { animation-delay: .75s; }
+    .final-scene-logo .final-logo-tile:nth-child(5) { animation-delay: 1s; }
+
+    .final-logo-tile img,
+    .final-lockup-grid img {
+      width: min(170px, 70%);
+      max-height: 58%;
+      object-fit: contain;
+    }
+
+    .final-photo-track,
+    .final-type-track {
+      position: absolute;
+      inset: 0 auto 0 0;
+      display: flex;
+      height: 100%;
+      will-change: transform;
+    }
+
+    .final-photo-track {
+      animation: finalPhotoTravel 24s cubic-bezier(.36, 0, .18, 1) infinite;
+    }
+
+    .final-type-track {
+      animation: finalTypeTravel 24s cubic-bezier(.38, 0, .22, 1) infinite;
+    }
+
+    .final-copy-tile {
+      width: 300px;
+      color: white;
+      font-family: "Freight BDR", Georgia, serif;
+      font-size: 40px;
+      white-space: nowrap;
+    }
+
+    .final-photo-tile {
+      width: 520px;
+      background: #11100e;
+    }
+
+    .final-photo-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .final-type-tile {
+      width: 520px;
+      color: white;
+      font-family: "Freight BDR", Georgia, serif;
+      font-size: 38px;
+      white-space: nowrap;
+    }
+
+    .final-lockup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr 1fr 1fr;
+      height: 100%;
+      transform: translateX(7%);
+      animation: finalLockupSettle 24s cubic-bezier(.4, 0, .2, 1) infinite;
+    }
+
+    .final-lockup-grid .final-logo-tile,
+    .final-lockup-grid .final-type-tile,
+    .final-lockup-grid .final-url-tile {
+      width: 100%;
+    }
+
+    .final-url-tile {
+      padding: 0 18px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .final-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 14px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .final-timeline span {
+      padding: 12px 14px;
+      background: #171512;
+      color: rgba(255,255,255,.68);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    @keyframes finalSceneLogo {
+      0%, 19% { opacity: 1; }
+      23%, 100% { opacity: 0; }
+    }
+
+    @keyframes finalScenePhotos {
+      0%, 18% { opacity: 0; }
+      22%, 55% { opacity: 1; }
+      59%, 100% { opacity: 0; }
+    }
+
+    @keyframes finalSceneType {
+      0%, 54% { opacity: 0; }
+      58%, 76% { opacity: 1; }
+      80%, 100% { opacity: 0; }
+    }
+
+    @keyframes finalSceneLockup {
+      0%, 75% { opacity: 0; }
+      79%, 95% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes finalLogoTile {
+      0%, 2% { opacity: 0; transform: translateY(26px); }
+      6%, 15% { opacity: 1; transform: translateY(0); }
+      20%, 100% { opacity: 0; transform: translateY(-22px); }
+    }
+
+    @keyframes finalPhotoTravel {
+      0%, 20% { transform: translateX(100%); }
+      56%, 100% { transform: translateX(-46%); }
+    }
+
+    @keyframes finalTypeTravel {
+      0%, 56% { transform: translateX(100%); }
+      78%, 100% { transform: translateX(-36%); }
+    }
+
+    @keyframes finalLockupSettle {
+      0%, 75% { transform: translateX(7%); }
+      81%, 94% { transform: translateX(0); }
+      100% { transform: translateX(-5%); }
+    }
+
     .panel {
       margin-top: 22px;
       padding: clamp(20px, 3vw, 40px);
@@ -813,6 +1014,14 @@
       .full-frame { height: 112px; }
       .exact-frame { height: 112px; }
       .overview-window { height: 74px; }
+      .final-window { height: 128px; }
+      .final-copy-tile { width: 190px; font-size: 28px; }
+      .final-photo-tile { width: 260px; }
+      .final-type-tile { width: 320px; font-size: 28px; }
+      .final-lockup-grid { grid-template-columns: 1fr 1.2fr 1fr; }
+      .final-lockup-grid .final-logo-tile:nth-child(4),
+      .final-lockup-grid .final-url-tile:nth-child(5) { display: none; }
+      .final-timeline { grid-template-columns: 1fr 1fr; }
       .format-comparison {
         gap: 24px;
         padding: 18px 14px;
@@ -866,6 +1075,62 @@
       with the browser window. The client approval file should be the exported full render at
       <strong>24496 × 112 px</strong>, not a browser screenshot.
     </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Final combined animation</h2>
+        <span>Scene 1-4 in one continuous loop</span>
+      </div>
+      <div class="final-window" aria-label="Combined final animation using scenes one through four">
+        <div class="final-scene final-scene-logo animated-strip">
+          <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+          <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+        </div>
+        <div class="final-scene final-scene-photos animated-strip">
+          <div class="final-photo-track animated-strip">
+            <div class="final-copy-tile">Visit</div>
+            <div class="final-photo-tile"><img src="assets/client-image-family-bed.jpg" alt="Family jumping on a bed at Black Desert Resort"></div>
+            <div class="final-copy-tile">Own it</div>
+            <div class="final-photo-tile"><img src="assets/client-image-ownit.jpg" alt="Aerial view of Black Desert Resort"></div>
+            <div class="final-copy-tile">Play it</div>
+            <div class="final-photo-tile"><img src="assets/client-image-playit2.jpg" alt="Golf course landscape"></div>
+            <div class="final-copy-tile">Visit</div>
+            <div class="final-photo-tile"><img src="assets/client-image-playit.jpg" alt="Black Desert golf landscape"></div>
+          </div>
+        </div>
+        <div class="final-scene final-scene-type animated-strip">
+          <div class="final-type-track animated-strip">
+            <div class="final-type-tile">Visit. Own it. Play it.</div>
+            <div class="final-type-tile">Visit. Own it. Play it.</div>
+            <div class="final-type-tile">Visit. Own it. Play it.</div>
+            <div class="final-type-tile">Visit. Own it. Play it.</div>
+            <div class="final-type-tile">Visit. Own it. Play it.</div>
+          </div>
+        </div>
+        <div class="final-scene final-scene-lockup animated-strip">
+          <div class="final-lockup-grid animated-strip">
+            <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+            <div class="final-type-tile">Visit. Own it. Play it.</div>
+            <div class="final-url-tile">blackdesertresort.com</div>
+            <div class="final-logo-tile"><img src="assets/bdr-horizontal-white-official.png" alt="Black Desert Resort"></div>
+            <div class="final-url-tile">blackdesertresort.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="final-timeline" aria-label="Combined animation scene order">
+        <span>Scene 01 · Logo</span>
+        <span>Scene 02 · Photo copy</span>
+        <span>Scene 03 · Type sweep</span>
+        <span>Scene 04 · Lockup close</span>
+      </div>
+      <div class="controls" aria-label="Combined final animation controls">
+        <button class="control" data-toggle-motion type="button">Pause previews</button>
+        <button class="control" data-restart-motion type="button">Replay previews</button>
+      </div>
+    </section>
 
     <section class="panel">
       <div class="panel-head">
