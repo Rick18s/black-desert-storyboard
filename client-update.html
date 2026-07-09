@@ -30,7 +30,7 @@
       --ink: #11100e;
       --paper: #f3efe8;
       --duration: 34s;
-      --final-duration: 24s;
+      --final-duration: 28s;
     }
 
     * { box-sizing: border-box; }
@@ -218,10 +218,15 @@
       background: var(--orange);
     }
 
-    .scene-logo-grid img,
-    .scene-lockup-grid img {
+    .scene-logo-grid img {
       width: min(170px, 72%);
       max-height: 58%;
+      object-fit: contain;
+    }
+
+    .scene-lockup-grid img {
+      width: min(200px, 84%);
+      max-height: 72%;
       object-fit: contain;
     }
 
@@ -254,6 +259,13 @@
       inset: 0 auto 0 0;
       display: flex;
       height: 100%;
+    }
+
+    .scene-photo-track {
+      animation: travel 48s linear infinite;
+    }
+
+    .scene-type-track {
       animation: travel 36s linear infinite;
     }
 
@@ -284,7 +296,7 @@
     }
 
     .scene-url-block {
-      font-size: clamp(9px, .95vw, 16px);
+      font-size: clamp(11px, 1.1vw, 18px);
       font-weight: 800;
       letter-spacing: .03em;
       white-space: nowrap;
@@ -387,10 +399,15 @@
     .final-scene-logo .final-logo-tile:nth-child(4) { animation-delay: .75s; }
     .final-scene-logo .final-logo-tile:nth-child(5) { animation-delay: 1s; }
 
-    .final-logo-tile img,
-    .final-lockup-grid img {
+    .final-logo-tile img {
       width: min(170px, 70%);
       max-height: 58%;
+      object-fit: contain;
+    }
+
+    .final-lockup-grid img {
+      width: min(200px, 82%);
+      max-height: 70%;
       object-fit: contain;
     }
 
@@ -468,7 +485,7 @@
 
     .final-url-tile {
       padding: 0 18px;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 800;
       letter-spacing: .03em;
       white-space: nowrap;
@@ -493,69 +510,69 @@
     }
 
     @keyframes finalTransitionWipe {
-      0%, 17% { opacity: 0; transform: translateX(-120%); }
-      18% { opacity: 1; transform: translateX(-120%); }
-      21% { opacity: 1; transform: translateX(120%); }
-      22%, 53% { opacity: 0; transform: translateX(120%); }
-      54% { opacity: 1; transform: translateX(-120%); }
-      57% { opacity: 1; transform: translateX(120%); }
-      58%, 74% { opacity: 0; transform: translateX(120%); }
-      75% { opacity: 1; transform: translateX(-120%); }
-      78% { opacity: 1; transform: translateX(120%); }
-      79%, 94% { opacity: 0; transform: translateX(120%); }
-      95% { opacity: 1; transform: translateX(-120%); }
-      98% { opacity: 1; transform: translateX(120%); }
-      99%, 100% { opacity: 0; transform: translateX(120%); }
+      0%, 14% { opacity: 0; transform: translateX(-120%); }
+      15% { opacity: 1; transform: translateX(-120%); }
+      18% { opacity: 1; transform: translateX(120%); }
+      19%, 60% { opacity: 0; transform: translateX(120%); }
+      61% { opacity: 1; transform: translateX(-120%); }
+      64% { opacity: 1; transform: translateX(120%); }
+      65%, 79% { opacity: 0; transform: translateX(120%); }
+      80% { opacity: 1; transform: translateX(-120%); }
+      83% { opacity: 1; transform: translateX(120%); }
+      84%, 95% { opacity: 0; transform: translateX(120%); }
+      96% { opacity: 1; transform: translateX(-120%); }
+      99% { opacity: 1; transform: translateX(120%); }
+      100% { opacity: 0; transform: translateX(120%); }
     }
 
     @keyframes finalSceneLogo {
-      0%, 17% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
-      21%, 100% { opacity: 0; transform: translateX(-7%); clip-path: inset(0 0 0 100%); }
+      0%, 14% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
+      18%, 100% { opacity: 0; transform: translateX(-7%); clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes finalScenePhotos {
-      0%, 18% { opacity: 0; transform: translateX(8%); clip-path: inset(0 100% 0 0); }
-      22%, 53% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
-      57%, 100% { opacity: 0; transform: translateX(-8%); clip-path: inset(0 0 0 100%); }
+      0%, 15% { opacity: 0; transform: translateX(8%); clip-path: inset(0 100% 0 0); }
+      19%, 60% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
+      64%, 100% { opacity: 0; transform: translateX(-8%); clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes finalSceneType {
-      0%, 54% { opacity: 0; transform: translateY(22px); clip-path: inset(0 100% 0 0); }
-      58%, 74% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
-      78%, 100% { opacity: 0; transform: translateY(-18px); clip-path: inset(0 0 0 100%); }
+      0%, 61% { opacity: 0; transform: translateY(22px); clip-path: inset(0 100% 0 0); }
+      65%, 79% { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+      83%, 100% { opacity: 0; transform: translateY(-18px); clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes finalSceneLockup {
-      0%, 75% { opacity: 0; transform: translateX(8%); clip-path: inset(0 100% 0 0); }
-      79%, 94% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
-      98%, 100% { opacity: 0; transform: translateX(-8%); clip-path: inset(0 0 0 100%); }
+      0%, 80% { opacity: 0; transform: translateX(8%); clip-path: inset(0 100% 0 0); }
+      84%, 95% { opacity: 1; transform: translateX(0); clip-path: inset(0); }
+      99%, 100% { opacity: 0; transform: translateX(-8%); clip-path: inset(0 0 0 100%); }
     }
 
     @keyframes finalLogoTile {
       0%, 2% { opacity: 0; transform: translateY(26px); }
-      6%, 15% { opacity: 1; transform: translateY(0); }
-      20%, 100% { opacity: 0; transform: translateY(-22px); }
+      5%, 12% { opacity: 1; transform: translateY(0); }
+      18%, 100% { opacity: 0; transform: translateY(-22px); }
     }
 
     @keyframes finalPhotoTravel {
-      0%, 20% { transform: translateX(100%); }
-      56%, 100% { transform: translateX(-46%); }
+      0%, 18% { transform: translateX(100%); }
+      64%, 100% { transform: translateX(-46%); }
     }
 
     @keyframes finalTypeTravel {
-      0%, 56% { transform: translateX(24%); }
-      78%, 100% { transform: translateX(-18%); }
+      0%, 63% { transform: translateX(24%); }
+      83%, 100% { transform: translateX(-18%); }
     }
 
     @keyframes finalTypeTextReveal {
-      0%, 57% { opacity: 0; transform: translateY(24px); }
-      61%, 73% { opacity: 1; transform: translateY(0); }
-      78%, 100% { opacity: 0; transform: translateY(-18px); }
+      0%, 64% { opacity: 0; transform: translateY(24px); }
+      68%, 78% { opacity: 1; transform: translateY(0); }
+      83%, 100% { opacity: 0; transform: translateY(-18px); }
     }
 
     @keyframes finalLockupSettle {
-      0%, 75% { transform: translateX(7%); }
-      81%, 94% { transform: translateX(0); }
+      0%, 80% { transform: translateX(7%); }
+      86%, 95% { transform: translateX(0); }
       100% { transform: translateX(-5%); }
     }
 
@@ -1073,7 +1090,7 @@
       .final-type-tile { width: 360px; font-size: 26px; padding: 0 24px; }
       .final-lockup-grid { grid-template-columns: .75fr 2fr 1.15fr; }
       .final-lockup-grid .final-type-tile { font-size: 20px; }
-      .final-url-tile { font-size: 10px; }
+      .final-url-tile { font-size: 12px; }
       .final-lockup-grid .final-logo-tile:nth-child(4),
       .final-lockup-grid .final-url-tile:nth-child(5) { display: none; }
       .final-timeline { grid-template-columns: 1fr 1fr; }
